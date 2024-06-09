@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="login-panel" class="input-panel">
+    <h2>LOGIN</h2>
+    <form>
+
+        <div class="image-embedded-input-wrapper">
+            <img class="left-side-image" src="{{ url_for('static', filename='icons/username_icon.png') }}" width="30px">
+            <input class="image-embedded-input" placeholder="Username"><br>
+        </div>
+
+        <div class="image-embedded-input-wrapper">
+            <img class="left-side-image" id="password-input-icon" src="{{ url_for('static', filename='icons/password_icon.png') }}" width="25px">
+            <input id="password-input" class="image-embedded-input" placeholder="Password" type="password">
+            <img class="right-side-image" src="{{ url_for('static', filename='icons/show_password_icon.png') }}" width="25px">     
+        </div>
+
+        
+    </form>
+
+    <button class="submit-button"> Log in </button>
+    <label id="login-panel-to-prev-section-label" class="to-prev-section-label">register</label>
+</section>
+
+{% endblock %}

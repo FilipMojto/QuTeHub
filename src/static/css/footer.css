@@ -1,0 +1,16 @@
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.contact-sites {
+
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+}

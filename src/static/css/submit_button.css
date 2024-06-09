@@ -1,0 +1,26 @@
+
+
+/* Styling for the submit button */
+.submit-button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    text-align: center; /* Center text horizontally */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Display as inline block */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect for the submit button */
+.submit-button:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
+
+/* Active effect for the submit button */
+.submit-button:active {
+    background-color: #3e8e41; /* Even darker green background when button is clicked */
+}

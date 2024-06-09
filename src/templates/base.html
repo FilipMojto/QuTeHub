@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Sections -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/input_panel.css') }}">
+
+    <!-- Widgets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/image_embedded_button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/submit_button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/image_embedded_input.css') }}">
+
+    <!-- Scripts -->
+
+    <script src="{{ url_for('static', filename='js/input_panel_switcher.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/input_panel/password_toggler.js') }}"></script>
+
+
+    <style>
+        #password-input-icon{
+            left: 7px;
+        }
+    </style>
+
+</head>
+<body>
+
+<header class="header">
+    <h1>QuTeHub</h1>
+
+    <div class="header-options">
+        <button class="image-embedded-button">
+            <img src="{{ url_for('static', filename='icons/user_account_icon.png')}}" alt="Manage account" width="55px">
+        </button>
+
+        <button class="image-embedded-button">
+            <img src="{{ url_for('static', filename='icons/settings_icon.png')}}" alt="Settings" width="55px">
+        </button>
+    </div>
+</header>
+
+<main>
+{% block content %}
+
+{% endblock %}
+</main>
+
+<footer class="footer">
+    <section class="contact-section">
+        <h2>About Me</h2>
+        <div class="contact-sites">
+            <img src="{{ url_for('static', filename='icons/github_logo.png') }}" alt="Github logo is displayed here." width="50px">
+            <img src="{{ url_for('static', filename='icons/linkedin_logo.png') }}" alt="LinkedIn logo is displayed here." width="50px">
+        </div>
+    </section>
+    <div class="copyright-notice">© 2024 fimoIT. All rights reserved.</div>
+</footer>
+
+
+</body>
+</html>
