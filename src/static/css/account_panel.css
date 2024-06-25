@@ -1,0 +1,57 @@
+
+
+/* Account Navbar Styling */
+.account-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 20px auto;
+    /* max-width: 800px; */
+    border: 1px solid #ddd;
+    /* padding: 20px; */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(#f0f8ff, #e6f7ff);
+    width: 100%;
+}
+
+.account-navbar {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    background: linear-gradient(#4caf50, #2e7d32);
+    /* padding: 15px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    min-width: 250px;
+    min-height: 500px;
+}
+
+/* Style for the buttons */
+.nav-button {
+    width: 100%;
+    background-color: #ffffff;
+    border: 2px solid #4caf50;
+    color: #4caf50;
+    padding: 15px 30px;
+    font-size: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #4caf50;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.nav-button:active {
+    background-color: #2e7d32;
+    color: #ffffff;
+    transform: scale(1.02);
+}

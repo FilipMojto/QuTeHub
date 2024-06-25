@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QuTeHub</title>
     
     <!-- Sections -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/input_panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/account_panel.css') }}"
 
     <!-- Widgets -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/image_embedded_button.css') }}">
@@ -20,27 +22,41 @@
 
     <script src="{{ url_for('static', filename='js/input_panel_switcher.js') }}"></script>
     <script src="{{ url_for('static', filename='js/input_panel/password_toggler.js') }}"></script>
-
-
-    <style>
-        #password-input-icon{
-            left: 7px;
+    
+    <script>
+        function checkLogin() {
+            window.location.href = "{{ url_for('check_login') }}";
         }
+
+        function logout(){
+            window.location.href = "{{ url_for('logout') }}"
+        }
+    </script>
+
+
+
+    <!-- Custom styles -->
+    
+    <style>
+    .clickable {
+        text-decoration: none; /* Remove underline from link */
+        color: inherit; /* Inherit color from h1 */
+    }
     </style>
 
 </head>
 <body>
 
 <header class="header">
-    <h1>QuTeHub</h1>
+    <a href="{{ url_for('home') }}" class="clickable"><h1>QuTeHub</h1></a>
 
     <div class="header-options">
-        <button class="image-embedded-button">
-            <img src="{{ url_for('static', filename='icons/user_account_icon.png')}}" alt="Manage account" width="55px">
+        <button class="image-embedded-button" onclick="checkLogin()">
+            <img src="{{ url_for('static', filename='icons/user_account_icon.png')}}" alt="Manage account" width="50px">
         </button>
 
         <button class="image-embedded-button">
-            <img src="{{ url_for('static', filename='icons/settings_icon.png')}}" alt="Settings" width="55px">
+            <img src="{{ url_for('static', filename='icons/settings_icon.png')}}" alt="Settings" width="50px">
         </button>
     </div>
 </header>
@@ -62,6 +78,14 @@
     <div class="copyright-notice">© 2024 fimoIT. All rights reserved.</div>
 </footer>
 
+
+<script>
+    document.querySelectorAll('.main-content-navbar-button').forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('toggled');
+    });
+});
+</script>
 
 </body>
 </html>

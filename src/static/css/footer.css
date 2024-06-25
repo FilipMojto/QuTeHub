@@ -8,6 +8,10 @@
     gap: 100px;
 }
 
+.contact-section{
+    margin-left: 15px;
+}
+
 .contact-sites {
 
     display: flex;

@@ -1,14 +1,39 @@
-.header{
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Add padding for better spacing */
     border-bottom: 2px solid;
+    background: linear-gradient(#9ae664, #15ff00);
+    border-color: rgb(0, 229, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
-.header-options{
+.header h1 {
+    margin: 0; /* Remove default margin */
+    color: white;
+    font-size: 28px; /* Increase font size for header */
+    cursor: pointer;
+}
+
+.header-options {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    gap: 10px; /* Increase gap between buttons */
+}
+
+.header button {
+    padding: 10px;
+    background: linear-gradient(#9ae664, #15ff00);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: lightgreen;
+
+    
+}
+
+.header button:hover {
+    background: #17a501;
+    box-shadow: 0 0 10px rgba(7, 7, 7, 0.1); /* Add hover effect with shadow */
 }
