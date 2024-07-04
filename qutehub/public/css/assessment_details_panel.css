@@ -1,0 +1,115 @@
+.assessment-description-panel {
+    width: 90%;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    height: fit-content;
+}
+
+.assessment-description-panel h2 {
+    color: #2e7d32; /* Dark green */
+    text-align: center;
+}
+
+.description-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    height: fit-content;
+}
+
+.assessment-description {
+    flex: 1;
+}
+
+.assessment-attributes {
+    display: inline-grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.assessment-attributes label:nth-child(2n+1) {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.assessment-attributes label:nth-child(2n) {
+    color: #555;
+}
+
+.assessment-description section h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.description-container article{
+    max-height: 10em;
+    overflow: auto;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.assessment-image-accept-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 20px;
+}
+
+.assessment-image-accept-button img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assessment-image-accept-button button {
+    background: linear-gradient(45deg, #43a047, #2e7d32); /* Gradient */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+.assessment-image-accept-button button:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(46, 125, 50, 0.5);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 20px 20px rgba(46, 125, 50, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
+    }
+}
+
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 700px) {
+    .description-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

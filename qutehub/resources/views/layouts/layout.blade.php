@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/assessment_details_panel.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/utils.css') }}">
+
+
 </head>
 <body>
     <header class="website-header">

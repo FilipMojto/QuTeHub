@@ -1,11 +1,18 @@
 
 body{
     margin: 0;
+    /* background-color: green; */
 }
 
 main {
-    padding: 20px;
+    margin: auto;
+    /* background-color: rgb(112, 116, 112); */
+    width: 100%;
+
 }
+
+
+
 
 @media screen and (max-width: 1040px){
 
