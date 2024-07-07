@@ -15,7 +15,8 @@ CREATE TYPE AssessmentSubject AS ENUM ('MATH', 'GEOGRAPHY', 'BIOLOGY', 'SCIENCE'
 CREATE TABLE public."users" (
     id SERIAL PRIMARY KEY,
     username VARCHAR(20) NOT NULL UNIQUE,
-    password VARCHAR(102) NOT NULL
+    password VARCHAR(102) NOT NULL,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE;
 );
 
 -- Create Assessment table
