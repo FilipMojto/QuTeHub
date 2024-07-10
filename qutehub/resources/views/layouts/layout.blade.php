@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{ URL::asset('css/homepage.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/assessment_details_panel.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/utils.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/input_panel.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/image_embedded_input.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/submit_button.css') }}">
 
 
 </head>
@@ -18,7 +21,7 @@
     <header class="website-header">
 
     <div class="logo-menu-section">
-        <h1>QuTeHub</h1>
+        <h1 onclick="location.assign('home')">QuTeHub</h1>
 
 
         <div class="vertical-space-filler">
@@ -64,20 +67,22 @@
 
     <div class="search-bar-account-icon-section">
     <span class="search-bar">
-        <img src={{ URL::asset('/icons/search.png'); }} width="15px">
+        <img src={{ URL::asset('/icons/search.png'); }} width="20px">
 
         <!-- <img src="static/icons/search.png" width="15px"> -->
-        <input type="text" placeholder="search">
+        <input type="text" placeholder="Search">
     </span>
-    <img class="account-panel-icon" src={{ URL::asset('icons/user_account_icon.png'); }} width="50px">
+    <img class="account-panel-icon" src={{ URL::asset('icons/user_account_icon.png'); }} width="50px" onclick="location.assign('login')">
     <!-- <img class="account-panel-icon" src="static/icons/user_account_icon.png" width="50px"> -->
     </div>
     </header>
+
 
     <main>
         @yield('content')
     </main>
 
+    
     <footer class="footer">
         <section class="contact-section">
             <h2>About Me</h2>
@@ -91,7 +96,7 @@
         </section>
         <div class="copyright-notice">© 2024 fimoIT. All rights reserved.</div>
     </footer>
+</body>
 
     <script src="{{ URL::asset('js/main.js') }}"></script>
-</body>
 </html>

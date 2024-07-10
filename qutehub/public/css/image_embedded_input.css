@@ -1,0 +1,38 @@
+.image-embedded-input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative; /* Make the wrapper a positioning context */
+}
+
+.image-embedded-input {
+    height: 35px; /* Increase the height as needed */
+    padding-left: 40px; /* Adjust to leave space for the image */
+    padding-right: 45px;
+    font-size: large;
+}
+
+
+
+.image-embedded-input-wrapper .left-side-image {
+    position: absolute;
+    left: 5px; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+}
+
+.image-embedded-input-wrapper .right-side-image {
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer;
+}
+
+.image-embedded-input::-webkit-input-placeholder {
+    /* Adjust the position of placeholder text */
+    position: absolute;
+    left: 40px; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+}
+

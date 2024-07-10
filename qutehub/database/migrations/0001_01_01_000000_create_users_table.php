@@ -35,6 +35,22 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        // Schema::create('app_users', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('username', 20)->unique();
+        //     $table->string('password', 102);
+        //     $table->boolean('is_admin')->default(0);
+        // });
+
+        Schema::create('user_sessions', function (Blueprint $table) {
+            $table->id();
+            $table->timestamp('started_at');
+            $table->timestamp('ended_at');
+            $table->integer('correct_questions');
+            $table->foreignId('assessment_id')->constrained('assessments');
+            $table->foreignId('user_id')->constrained('app_users');
+        });
     }
 
     /**

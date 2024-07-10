@@ -1,0 +1,109 @@
+/* Base styling for input panels */
+.input-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    min-width: 300px;
+    max-width: 350px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #2e7d32;
+
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Styling for forms inside input panels */
+.input-panel form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+}
+
+/* Styling for input fields */
+.input-panel input {
+    padding: 10px;
+    padding-left: 40px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+/* Hover effect for input fields */
+.input-panel input:hover {
+    border-color: #4CAF50; /* Green border on hover */
+}
+
+/* Focus effect for input fields */
+.input-panel input:focus {
+    outline: none;
+    border-color: #4CAF50; /* Green border when focused */
+    box-shadow: 0px 0px 8px rgba(76, 175, 80, 0.4); /* Light shadow on focus */
+}
+
+/* Styling for submit button */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
+
+/* Active effect for submit button */
+.submit-button:active {
+    background-color: #3e8e41; /* Even darker green background when clicked */
+}
+
+/* Styling for links or labels to switch between panels */
+.to-prev-section-label {
+    margin-top: 20px;
+    font-size: large;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #4CAF50; /* Green color for contrast */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for links or labels */
+.to-prev-section-label:hover {
+    color: #45a049; /* Darker green color on hover */
+}
+
+
+.image-embedded-input-wrapper {
+    width: 100%;
+}
+
+/* Your CSS rules for every left-side-image except the first one */
+.image-embedded-input-wrapper:not(:first-child) .left-side-image {
+    /* Specify your custom styling for left-side images here */
+    margin-left: 3px;
+    opacity: 0.8; /* Reduce opacity for non-first images */
+}
+
+.flashed-messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    height: 100%; /* Ensure the container has a height */
+}

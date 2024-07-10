@@ -38,8 +38,8 @@ CREATE TABLE public."assessments" (
 -- Create Session table
 CREATE TABLE public."sessions" (
     id SERIAL PRIMARY KEY,
-    started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ended_at TIMESTAMP,
+    started_at TIMESTAMP NOT NULL,
+    ended_at TIMESTAMP NOT NULL CURRENT_TIMESTAMP,
     correct_questions INTEGER CHECK (correct_questions >= 0),
     assessment_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,

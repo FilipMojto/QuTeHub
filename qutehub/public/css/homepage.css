@@ -11,6 +11,21 @@
     justify-content: center;
 }
 
+.assessment-section{
+    margin: 20px;
+    
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 5px 10px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assessment-section h2 {
+
+    color: #2e7d32; /* Dark green */
+    font-size: 28px;
+}
 
 .main-content-navbar {
     width: 100%;
@@ -123,6 +138,7 @@
     justify-content: space-evenly;
     gap: 5px;
     margin: 10px 5px 5px 5px;
+
 }
 
 .quiz-time {

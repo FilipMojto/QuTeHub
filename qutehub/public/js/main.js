@@ -53,4 +53,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // Switching between login and register panels
+
+
+    document.getElementById('login-panel-to-register-section-label').addEventListener('click', function() {
+        window.location.href = '/register';
+    });
+
+
+
+
+
+
+    // Toggling passwords when clicking on icon
+
+    const togglePasswordIcons = document.querySelectorAll('.right-side-image');
+
+    togglePasswordIcons.forEach(function(icon) {
+        icon.addEventListener('mousedown', function() {
+            const parentWrapper = icon.closest('.image-embedded-input-wrapper');
+            // Find the input within this parent wrapper
+            const passwordInput = parentWrapper.querySelector('input');
+
+            // Toggle the type attribute of the input field
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Prevent default behavior (like selecting text) on mousedown
+            return false;
+        });
+
+        // Reset input type to password when mouse button is released
+        icon.addEventListener('mouseup', function() {
+            const parentWrapper = icon.closest('.image-embedded-input-wrapper');
+            // Find the input within this parent wrapper
+            const passwordInput = parentWrapper.querySelector('input');
+
+            // Reset input type to password
+            passwordInput.setAttribute('type', 'password');
+        });
+    });
 });
+
+
+
+// Why the hell is this necessary?
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('register-panel-to-login-section-label').addEventListener('click', function() {
+        window.location.href = '/login';
+    });
+
+
+    // Toggling passwords when clicking on icon
+
+    const togglePasswordIcons = document.querySelectorAll('.right-side-image');
+
+    togglePasswordIcons.forEach(function(icon) {
+        icon.addEventListener('mousedown', function() {
+            const parentWrapper = icon.closest('.image-embedded-input-wrapper');
+            // Find the input within this parent wrapper
+            const passwordInput = parentWrapper.querySelector('input');
+
+            // Toggle the type attribute of the input field
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Prevent default behavior (like selecting text) on mousedown
+            return false;
+        });
+
+        // Reset input type to password when mouse button is released
+        icon.addEventListener('mouseup', function() {
+            const parentWrapper = icon.closest('.image-embedded-input-wrapper');
+            // Find the input within this parent wrapper
+            const passwordInput = parentWrapper.querySelector('input');
+
+            // Reset input type to password
+            passwordInput.setAttribute('type', 'password');
+        });
+    });
+})

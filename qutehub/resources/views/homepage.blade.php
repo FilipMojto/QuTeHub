@@ -1,29 +1,11 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuTeHub</title>
-
-    <link rel="stylesheet" href={{ URL::asset('css/header.css'); }}>
-    <link rel="stylesheet" href={{ URL::asset('css/main.css'); }}>
-    <link rel="stylesheet" href={{ URL::asset('css/footer.css'); }} >
-    <link rel="stylesheet" href={{ URL::asset('css/homepage.css'); }}  >
-    <link rel="stylesheet" href={{ URL::asset('css/utils.css'); }} >
-
-
-</head>
-<body>
-    
-    <main> -->
 @extends('layouts.layout')
 
 @section('content')
-    <section id="popular-assessments-section">
+<div class="haha">
+    <section id="popular-assessments-section" class="assessment-section">
         <h2>Popular</h2>
         <hr>
-
-
+        
         <div class="quiz-list">
             <div class="quiz-element">
                 <h3>Basic Math Quiz</h3>
@@ -275,11 +257,19 @@
             
         </div>
 
-
+     
     </section>
 
-    <section id="recomended-assessments-section">
+
+
+
+    <section id="recomended-assessments-section" class="assessment-section">
         <h2>Recommended</h2>
         <hr>
     </section>
+
+
+</div>    
+   
+    
 @endsection
