@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "../../.."
+	},
+	{
+		"path": "../.."
+	},
+	{
+		"path": "../../../../QuTeHub2/qutehub"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "QuTeHub3"
+  }
+}

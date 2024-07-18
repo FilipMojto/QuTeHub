@@ -1,0 +1,13 @@
+
+
+.submit-button{
+    border-radius: 4px;
+    background-color: #4CAF50; /* Green button color */
+    color: #ffffff; /* White text color */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
