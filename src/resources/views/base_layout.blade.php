@@ -66,7 +66,7 @@
 
     <footer class="footer">
         <section class="contact-section">
-            <h2>About Me</h2>
+            <h2>About Author</h2>
             <div class="contact-sites">
                 <img src="{{ URL::asset('icons/github_logo.png') }}" alt="Github logo" width="50px">
                 <img src="{{ URL::asset('icons/linkedin_logo.png') }}" alt="LinkedIn logo" width="50px">
