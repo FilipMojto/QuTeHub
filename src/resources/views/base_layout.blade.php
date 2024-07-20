@@ -29,7 +29,6 @@
     <header>
         <h1 onclick="location.assign('/home')">QuTeHub</h1>
         
-        
         @if ($user)
 
             <div class="account-icon-options-wrapper input-design-one">
@@ -50,19 +49,16 @@
             </div>
   
         @else
-        <div class="account-icon-options-wrapper" onclick="location.assign('/login')">
+        <div class="account-icon-options-wrapper input-design-one" onclick="location.assign('/login')">
             <img class="account-icon" src="{{ URL::asset('/icons/user_account_icon.png') }}" width="50px" onclick="location.assign('/login')">
         </div>
         @endif
-        
-        
-
-        
-
     </header>
 
     
-    @yield('content')
+    <main class="content-wrapper">
+        @yield('content')
+    </main>
 
     <footer class="footer">
         <section class="contact-section">
@@ -75,7 +71,7 @@
         <div class="copyright-notice">© 2024 fimoIT. All rights reserved.</div>
     </footer>
 
-    <script src="{{ URL::asset("/js/main.js") }}"></script>
+<script src="{{ URL::asset("/js/main.js") }}"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 
     <!-- Including Popper scripts for dropdowns, popovers, tooltips, etc. -->

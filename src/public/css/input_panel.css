@@ -1,8 +1,9 @@
 .input-panel {
     /* margin: auto; */
-    max-width: 400px;
+    width: min(80%, 350px);
+    /* max-width: 400px; */
     margin: auto;
-    margin-top: 10%;
+    /* margin-top: 10%; */
     padding: 20px;
     background-color: #1a1a1a; /* Dark background color */
     color: #ffffff; /* White text color */
@@ -12,16 +13,17 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    font-size: inherit;
 }
 
 .input-panel .panel-info-icon {
     position: absolute;
-    top: 8px;
-    right: 18px;
+    top: 10px;
+    right: 10px;
     border: 2px solid;
     border-radius: 15px;
     padding: 3px 10px;
-    font-size: large;
+    font-size: 1.1em;
     font-family: Georgia, 'Times New Roman', Times, serif;
     cursor: pointer;
 }
@@ -30,10 +32,28 @@
     background: rgb(132, 132, 132);
 }
 
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+
+.input-panel .remember-me-container{
+    /* margin-top: 15px; */
+    margin-top: -5px;
+    font-size: inherit;
+}
+
+.info-icon-box-wrapper{
+    background-color: red;
+    width: 100%;
+}
+
 .input-panel .info-box {
     position: absolute;
     top: 0px; /* Adjust as needed */
-    right: -280px; /* Adjust as needed */
+    right: -300px; /* Adjust as needed */
+
+
     max-width: 15em;
     padding: 10px;
     background-color: #333333; /* Darker input background */
@@ -41,19 +61,21 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border: 1px solid #444444; /* Darker border */
     border-radius: 4px;
+    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7em;
     display: none; /* Initially hidden */
     z-index: 200;
 }
 
-.input-panel .info-box::before, .input-panel .info-box::after {
+.input-panel .info-box::before {
     content: '';
     position: absolute;
     width: 0;
     height: 0;
     border-style: solid;
     top: 23px;
-    left: -35px;
+    left: -38vw;
     transform: rotate(180deg);
     border-width: 9px 0 9px 35px;
     z-index: 1;
@@ -89,7 +111,7 @@
 }
 
 .input-panel h1 {
-    font-size: 28px;
+    font-size: 2em;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -105,39 +127,25 @@
     background-color: #333333; /* Darker input background */
     color: #ffffff; /* White text color */
     box-shadow: inset 0 1px 2px rgba(110, 74, 74, 0.1);
-    font-size: 20px;
+    font-size: 1.25em;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.input-panel button {
+.input-panel .submit-button {
     width: 80%;
     padding: 12px;
     border: none;
-    border-radius: 4px;
-    background-color: #4CAF50; /* Green button color */
-    color: #ffffff; /* White text color */
-    transition: background-color 0.3s ease;
-    font-size: 18px;
+    font-size: 1.15em;
     font-weight: bold;
-    cursor: pointer;
-    margin-top: 45px;
+    margin-top: -20px;
     margin-bottom: 20px;
 }
 
-.input-panel button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
 
-.input-panel label {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    text-align: center;
-}
 
 .input-panel .panel-switcher-label {
     font-weight: bold;
-    font-size: large;
+    font-size: 1.1em;
 }
 
 .input-panel .panel-switcher-label:hover {
@@ -150,9 +158,9 @@
 }
 
 .input-panel .left-side-input-icon {
-    position: relative;
-    top: 41px;
-    left: 6px;
+    position: absolute;
+    top: 15%;
+    left: 2%;
     background-color: rgb(132, 132, 132);
     border-radius: 5px;
     padding: 3px;
@@ -160,8 +168,10 @@
 
 .input-panel .right-side-input-icon {
     position: absolute;
-    top: 42px;
-    right: 7px;
+    top: 20%;
+    right: 2%;
+    /* top: 48px; */
+    /* right: 7px; */
     background-color: rgb(132, 132, 132);
     border-radius: 5px;
     padding: 1px 5px;
@@ -177,6 +187,8 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    gap: 35px;
+    font-size: inherit;
 }
 
 .input-panel .input-alert-wrapper {
@@ -184,6 +196,10 @@
 }
 
 .alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     color: rgb(195, 43, 43);
     display: flex;
     justify-content: left;
@@ -192,13 +208,20 @@
     margin-top: 4px;
     width: 100%;
     position: absolute;
+    font-size: 0.85em;
 }
 
 .flashed-messages {
-    margin: auto;
-    width: 70%;
+    width: 100%;
+    background: red;
+    align-content: center;
+    left: 30px;
+    font-size: inherit;
 }
 
 .flashed-messages .alert {
-    top: 10px;
+    /* top: 5px; */
+    font-size: 0.95em;
+    margin: auto;
+    width: 100%;
 }

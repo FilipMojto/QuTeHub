@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginPanelController;
 use App\Http\Controllers\RegisterPanelController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\QuizSpecificationPanelController;
+use App\Http\Controllers\QuizEditorPanelController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,5 +26,5 @@ Route::view('/register', 'RegisterPanel')->name('register.view');
 Route::post('/register', [RegisterPanelController::class, 'register'])->name('register.store');
 
 
-Route::get('/quiz-specification', [QuizSpecificationPanelController::class, 'view_specification_panel'])->name('quiz.view');
+Route::get('/quiz-specification', [QuizEditorPanelController::class, 'view_specification_panel'])->name('quiz.view');
 

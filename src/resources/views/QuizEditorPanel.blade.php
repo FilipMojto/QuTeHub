@@ -77,7 +77,7 @@
                     <form id="demonstrativeQuestion" style="display: none;" class="question">
                         <div class="question-attributes">
                             <label class="question-no">1.</label>
-                            <text class="question-text" placeholder="Insert question here">
+                            <input class="question-text" placeholder="Insert question here">
                         </div>
                         
                         <div class="question-options">
@@ -233,4 +233,5 @@
         });
     });
 </script>
+
 @endsection

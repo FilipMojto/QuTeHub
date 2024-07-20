@@ -60,7 +60,7 @@
             <img class="right-side-input-icon" src="{{ URL::asset('/icons/show_password_icon.png') }}" width="25px">
         </div>
 
-        <button>Proceed</button>
+        <button class="submit-button" style="margin-top: 35px; margin-bottom: -15px;">Proceed</button>
 
         <div class="flashed-messages">
             @if ($errors->has('register-error'))

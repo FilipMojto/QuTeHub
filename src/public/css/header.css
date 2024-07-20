@@ -3,6 +3,7 @@ header, .account-option-list{
 }
 
 header {
+    /* background-color: green; */
     width: 100%;
     /* padding-right: 68px; */
     border-bottom: 1px solid #444444;
@@ -19,7 +20,7 @@ header {
 
     font-family: inherit;
     font-size: inherit;
-    height: 150px;
+    height: 120px;
     /* background-color: yellow; */
 }
 
@@ -75,7 +76,7 @@ header h1 {
     justify-content: flex-start;
     align-items: center;
     /* top: 100%; Position it below the icon */
-    right: -2%;
+    right: -1%;
     top: 100%;
     /* top: 12.8%; */
     /* top: 125px; */

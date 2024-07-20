@@ -1,19 +1,23 @@
 @extends('base_layout')
 
+@section('content')
 
 <section class="input-panel">
-    <label class="panel-info-icon">i</label>
+    <div class="info-icon-box-wrapper">
+        <label class="panel-info-icon">i</label>
 
-    <section class="info-box">
-        <h4>Tip 1</h4>
-        <p><b>Username</b> has to be unique and must contain 8-20 characters.</p>
-        
-        <h4>Tip 2</h4>
-        <p><b>E-mail</b> has to be unique and must follow the standard mail format.</p>
+        <section class="info-box">
+            <h4>Tip 1</h4>
+            <p><b>Username</b> has to be unique and must contain 8-20 characters.</p>
+            
+            <h4>Tip 2</h4>
+            <p><b>E-mail</b> has to be unique and must follow the standard mail format.</p>
 
-        <h4>Tip 3</h4>
-        <p><b>Password</b> must contain 8-20 characters.</p>
-    </section>
+            <h4>Tip 3</h4>
+            <p><b>Password</b> must contain 8-20 characters.</p>
+        </section>
+    </div>
+    
     <!-- <img class="panel-info-icon" src="{{ URL::asset('/icons/info.png') }}" width="25px"> -->
     <h1>Login</h1>
 
@@ -51,7 +55,12 @@
             @endif
         </div>
 
-        <button>Proceed</button>
+        <div class="remember-me-container" style="display: flex;">
+            <input id="remember-me-checkbox" name="remember_me" type="checkbox">
+            <label for="remember-me-checkbox" style="margin: 0;">Remember Me</label>
+        </div>
+        
+        <button class="submit-button">Proceed</button>
 
         
     </form>

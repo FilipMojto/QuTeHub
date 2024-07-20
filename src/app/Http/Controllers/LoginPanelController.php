@@ -12,7 +12,7 @@ class LoginPanelController extends Controller
     public function view_login_panel()
     {
         if (Auth::check()){
-            return back()->withErrors(['login-error' => 'Already logged user!']);
+            return back()->withErrors(['login-error' => 'Already logged in!']);
         }
 
         return view('LoginPanel');
@@ -63,9 +63,14 @@ class LoginPanelController extends Controller
         
         // Check if the user exists and the password is correct
         if ($user && Hash::check($request->input('password'), $user->password)) {
+            // Check if 'remember_me' checkbox is checked
+            $remember = $request->has('remember_me');
+
             // Log the user in
-            Auth::login($user, true);
-            return redirect()->intended('home'); // Redirect to the intended page
+            Auth::login($user, $remember);
+
+            // Redirect to the intended page
+            return redirect()->intended('home'); 
         } else {
             // Redirect back with an error message
             return back()->withErrors([
