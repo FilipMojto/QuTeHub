@@ -3,29 +3,23 @@ header, .account-option-list{
 }
 
 header {
-    /* background-color: green; */
     width: 100%;
-    /* padding-right: 68px; */
     border-bottom: 1px solid #444444;
     display: flex;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
     justify-content: space-between;
-    /* background-color: rgb(54, 54, 54); */
-    /* padding: 20px 30px; */
     padding-left: 30px;
     padding-right: 10px;
-    /* padding-top: 30px; */
 
     font-family: inherit;
     font-size: inherit;
-    height: 120px;
-    /* background-color: yellow; */
+    height: 80px;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 1.7em;
 }
 
 .account-icon-options-wrapper {

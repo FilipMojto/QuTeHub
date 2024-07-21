@@ -27,4 +27,5 @@ Route::post('/register', [RegisterPanelController::class, 'register'])->name('re
 
 
 Route::get('/quiz-specification', [QuizEditorPanelController::class, 'view_specification_panel'])->name('quiz.view');
+Route::post('/quiz', [QuizEditorPanelController::class, 'store'])->name('quiz.store');
 

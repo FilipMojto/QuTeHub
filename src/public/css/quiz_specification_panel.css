@@ -10,7 +10,8 @@
     /* background-color: red; */
     height: fit-content;
     padding: 0px 10px;
-    font-size: 1.5em;
+    font-size: inherit;
+    margin: 0;
     /* background-color: red; */
 }
 
@@ -40,10 +41,11 @@
 .quiz-specification-panel .section-wrapper{
     height: fit-content;
     /* background-color: red; */
-
+    /* display: inline; */
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     gap: 20px;
+
     /* background-color: green; */
     /* max-width: 1px; */
 }
@@ -58,8 +60,10 @@
     height: 50%;
     font-size: inherit;
     /* background-color: green; */
-    height: 450px;
+    height: fit-content;
+    width: fit-content;
     /* flex: 1; */
+    /* width: fit-content; */
     /* background-color: red; */
 }
 
@@ -161,7 +165,7 @@
     padding: 15px;
     gap: 15px;
     height: 100%;
-    width: clamp(200px, 75vw, 700px);
+    /* width: clamp(200px, 75vw, 400px); */
     box-sizing: border-box;
     font-size: 1em;
     margin: 0;
@@ -177,13 +181,13 @@
     align-content: center;
     /* padding: 120px 10px; */
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0.5em 1em;
     font-size: 0.8em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     width: 100%;
-    height: clamp(30px, 100%, 45px);
+    /* height: clamp(30px, 100%, 45px); */
     /* height: 80%; */
     /* max-width: 150px; */
     /* max-height: 2.4em; */
@@ -219,6 +223,7 @@
 .question-list-section .question-list-panel{
     width: 100%;
     padding: 20px 20px;
+    margin-top: 44px;
     background-color: #444444;
     /* display: flex; */
     /* flex-direction: column; */
@@ -265,7 +270,7 @@
     width: 100%;
     padding: 10px;
     gap: 20px;
-    color: rgb(196, 190, 190);
+    color: rgb(255, 255, 255);
     font-family: inherit;
     font-size: 0.9em;
     margin-bottom: 20px;
@@ -376,7 +381,7 @@
     display: block;
 }
 
-@media only screen and (max-width: 2000px){
+@media only screen and (max-width: 1000px){
     .quiz-specification-panel .section-wrapper{
         /* height: clamp(600px, 75vh, 1650px); */
         flex-direction: column;
@@ -385,19 +390,20 @@
 }
 
 @media only screen and (max-width: 900px){
-    .general-info-section{
+    .general-info-section {
         height: fit-content;
     }
-
-    .general-info-form{
-        flex-direction: column;
-        /* background-color: red; */
+    
+    .general-info-form {
+        /* flex-direction: column; */
         height: fit-content;
+        display: flex;
     }
-
-    .subject-tag-list, .name-difficulty-time-panel{
-        width: max(350px, 50%);
+    
+    .subject-tag-list, .name-difficulty-time-panel {
+        
         height: 50%;
+
     }
 
  

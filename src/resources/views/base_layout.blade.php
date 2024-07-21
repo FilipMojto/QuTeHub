@@ -32,7 +32,7 @@
         @if ($user)
 
             <div class="account-icon-options-wrapper input-design-one">
-                <img class="account-icon" src="{{ URL::asset('/icons/user_account_icon.png') }}" width="55px">
+                <img class="account-icon" src="{{ URL::asset('/icons/user_account_icon.png') }}" width="35px">
 
                 <div class="account-option-list">
 
@@ -64,11 +64,11 @@
         <section class="contact-section">
             <h2>About Author</h2>
             <div class="contact-sites">
-                <img src="{{ URL::asset('icons/github_logo.png') }}" alt="Github logo" width="50px">
-                <img src="{{ URL::asset('icons/linkedin_logo.png') }}" alt="LinkedIn logo" width="50px">
+                <img src="{{ URL::asset('icons/github_logo.png') }}" alt="Github logo" width="35px">
+                <img src="{{ URL::asset('icons/linkedin_logo.png') }}" alt="LinkedIn logo" width="35px">
             </div>
         </section>
-        <div class="copyright-notice">© 2024 fimoIT. All rights reserved.</div>
+        <p>© 2024 fimoIT. All rights reserved.</p>
     </footer>
 
 <script src="{{ URL::asset("/js/main.js") }}"></script>

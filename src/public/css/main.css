@@ -16,12 +16,12 @@ body{
 .content-wrapper {
     /* max-height: 100vh;        Maximum height of 70% of viewport height */
     width: 100%;
-    padding: 10px 0;
+    /* padding: 10px 0; */
     box-sizing: border-box;  /* Include padding in height calculation */
     overflow-y: auto;        /* Scroll if content overflows */
     flex: 1;
     /* overflow: visible; */
-    /* background-color: green; */
+    height: 100%;
     align-content: center;
     font-size: inherit;
     background-color: inherit;
