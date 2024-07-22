@@ -10,27 +10,34 @@
         <input type="hidden" name="difficulty" id="selected-difficulty">
         <input type="hidden" id="questionsData" name="questions">
 
-        <div class="header-submit-button-wrapper">
-            <h2>Quiz Editor</h2>
-            <input type="submit" class="submit-button">
-            <div class="alert">
-                @if ($errors->has('name'))
-                    <div class="alert">{{ $errors->first('name') }}</div>
-                @elseif ($errors->has('difficulty'))
-                    <div class="alert">{{ $errors->first('difficulty') }}</div>
-                @elseif ($errors->has('time'))
-                    <div class="alert">{{ $errors->first('time') }}</div>
-                @elseif ($errors->has('questions'))
-                    <div class="alert">{{ $errors->first('questions') }}</div>
-                @elseif ($errors->has('subjects'))
-                    <div class="alert">{{ $errors->first('subjects') }}</div>
-                @endif
+        <div>
+            
+
+            <div class="header-submit-button-wrapper">
+                <h2>Quiz Editor</h2>
+                <input type="submit" class="submit-button">
+                <!-- <div class="alert">
+                    @if ($errors->has('name'))
+                        <div class="alert">{{ $errors->first('name') }}</div>
+                    @elseif ($errors->has('difficulty'))
+                        <div class="alert">{{ $errors->first('difficulty') }}</div>
+                    @elseif ($errors->has('time'))
+                        <div class="alert">{{ $errors->first('time') }}</div>
+                    @elseif ($errors->has('questions'))
+                        <div class="alert">{{ $errors->first('questions') }}</div>
+                    @elseif ($errors->has('subjects'))
+                        <div class="alert">{{ $errors->first('subjects') }}</div>
+                    @endif
+                </div> -->
+            </div>
+                <!-- <button class="submit-button">Submit</button> -->
+
+
+            <div style="display: inline-block">
+            
+                <p style="max-width: 40em;">Please fill the following data to define your own quiz's parameters. To define questions use the editor below.</p>
             </div>
         </div>
-            <!-- <button class="submit-button">Submit</button> -->
-
-
-        <p style="max-width: 40em;">Please fill the following data to define your own quiz's parameters. To define questions use the editor below.</p>
         <!-- <p>To define questions use the editor below.</p> -->
 
         <div class="section-wrapper">
