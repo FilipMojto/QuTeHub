@@ -7,3 +7,21 @@
     color: #ffffff; /* White text color */
     box-shadow: inset 0 1px 2px rgba(110, 74, 74, 0.1);
 }
+
+.arrow-left, .arrow-right{
+    display: inline-block;
+    background-color: inherit;
+    /* min-height: 10px;
+    min-width: 10px; */
+    border-left: 2px solid;
+    border-top: 2px solid;
+    
+}
+
+.arrow-left{
+    transform: rotate(-45deg);
+}
+
+.arrow-right{
+    transform: rotate(135deg);
+}

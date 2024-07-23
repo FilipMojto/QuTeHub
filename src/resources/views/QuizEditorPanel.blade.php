@@ -1,155 +1,291 @@
 @extends('base_layout')
 
 @section('content')
-<div class="quiz-specification-panel" style="display: block;">  
+<form class="quiz-specification-panel" id="editor-panel-form" method="POST" action="{{ route('quiz.store') }}">
+    @csrf
 
-    <form id="editor-panel-form" method="POST" action="{{ route('quiz.store') }}">
-        @csrf
+    <input type="hidden" name="subjects" id="selected-subjects">
+    <input type="hidden" name="difficulty" id="selected-difficulty">
+    <input type="hidden" id="questionsData" name="questions">
+    <input type="hidden" id="question-time-unit" name="time-unit"> 
 
-        <input type="hidden" name="subjects" id="selected-subjects">
-        <input type="hidden" name="difficulty" id="selected-difficulty">
-        <input type="hidden" id="questionsData" name="questions">
+    <div>
+        <div class="quiz-editor-nav-menu">
 
-        <div>
-            
+     
+            <h2 style="font-size: 1.3em;" style="grid-area: a;">Quiz Editor</h2>
+            <div class="nav-menu-panel" style="grid-area: b;">
+                <div class="arrow arrow-left"></div>
+                <div class="nav-menu-options">
+                    
+                    <div class="menu-option-wrapper"><label for="" class="menu-option selected-menu-option">Parameters</label></div>
+                    <div class="menu-option-wrapper"><label for="" class="menu-option">Question List</label></div>
+                    <div class="menu-option-wrapper"><label for="" class="menu-option">Submissions</label></div>
 
-            <div class="header-submit-button-wrapper">
-                <h2>Quiz Editor</h2>
-                <input type="submit" class="submit-button">
-                <!-- <div class="alert">
-                    @if ($errors->has('name'))
-                        <div class="alert">{{ $errors->first('name') }}</div>
-                    @elseif ($errors->has('difficulty'))
-                        <div class="alert">{{ $errors->first('difficulty') }}</div>
-                    @elseif ($errors->has('time'))
-                        <div class="alert">{{ $errors->first('time') }}</div>
-                    @elseif ($errors->has('questions'))
-                        <div class="alert">{{ $errors->first('questions') }}</div>
-                    @elseif ($errors->has('subjects'))
-                        <div class="alert">{{ $errors->first('subjects') }}</div>
-                    @endif
-                </div> -->
+                    <!-- <label class="menu-option selected-menu-option">Parameters</label>
+                    <label class="menu-option">Question List</label>
+                    <label class="menu-option">Submission</label> -->
+                </div>
+                <div class="arrow arrow-right"></div>
             </div>
-                <!-- <button class="submit-button">Submit</button> -->
+     
 
-
-            <div style="display: inline-block">
-            
-                <p style="max-width: 40em;">Please fill the following data to define your own quiz's parameters. To define questions use the editor below.</p>
-            </div>
+       
+                <!-- <button type="button" id="prev-panel-button" class="submit-button">Back</button> -->
+            <input style="grid-area: c;" type="submit" id="next-panel-button" class="submit-button" value="Next">
+        
         </div>
-        <!-- <p>To define questions use the editor below.</p> -->
+    </div>
 
-        <div class="section-wrapper">
-            <section class="general-info-section">
-                <h3>Parameters</h3>
-                <hr>
+    <div id="section-wrapper">
+        <section class="general-info-section" style="display: block;">
+            <h3>Parameters</h3>
+            <hr>
+            <section class="general-info-form">
+                <div class="quiz-inputs-panel">
 
-                <!-- <p>Selected quiz subjects are highlighted in <u style="color: rgb(1, 226, 1);"> green</u>.</p> -->
-
-                <section class="general-info-form">
-                    <div class="name-difficulty-time-panel">
-                        <fieldset class="general-info-form-input quiz-name-field input-design-one">
+                    <div class="input-alert-wrapper">
+                        <fieldset class="input-design-one">
                             <legend>Name</legend>
-                            <input name="name" class="input-design-one" required>
+                            <input name="name" type="text" class="input-design-one" required>
                         </fieldset>
 
-
-                        <fieldset class="general-info-form-input quiz-difficulty-list input-design-one">
+                        @if ($errors->has('name'))
+                            <div class="alert-text-image-wrapper">
+                                <img src="{{ URL::asset('icons/warning.png') }}" width="20px">
+                                <label class="alert-text">{{ $errors->first('name') }}</label>
+                            </div>
+                        @endif
+                    </div>
+                    
+                    <div class="input-alert-wrapper">
+                        <fieldset class="input-design-one">
                             <legend>Difficulty</legend>
-
-                            <select class="input-design-one" required>
-                                <option>Easy</option>
-                                <option>Moderate</option>
-                                <option>Hard</option>
+                            <select class="input-design-one" id="quiz-difficulty-list">
+                                <option value="">---</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Moderate">Moderate</option>
+                                <option value="Hard">Hard</option>
                             </select>
                         </fieldset>
 
-                        <fieldset class="general-info-form-input quiz-time-field input-design-one">
-                            <legend>Time</legend>
-                            <input name="time" class="input-design-one" placeholder="---" required>
-                            <select class="input-design-one" required>
-                                <option>minutes</option>
-                                <option>seconds</option>
-                                <option>hours</option>
-                            </select>
-                        </fieldset>
+                        @if ($errors->has('difficulty'))
+                            <div class="alert-text-image-wrapper">
+                                <img src="{{ URL::asset('icons/warning.png') }}" width="20px">
+                                <label class="alert-text">{{ $errors->first('difficulty') }}</label>
+                            </div>
+                        @endif
                     </div>
 
-                    <fieldset class="general-info-form-input subject-tag-list input-design-one">
-                        <legend>Subject</legend>
+                    <div class="input-alert-wrapper">
+                        <div class="time-value-unit-wrapper">
 
-                        <label class="quiz-subject">Math</label>
-                        <label class="quiz-subject">Geography</label>
-                        <label class="quiz-subject">Language</label>
-                        <label class="quiz-subject">History</label>
-                        <label class="quiz-subject">Science</label>
-                        <label class="quiz-subject">Biology</label>
-                        <label class="quiz-subject">Chemistry</label>
-                        <label class="quiz-subject">Physics</label>
-                    </fieldset>
-                    
-                    
-                </section>
-            </section>
-
-            <section class="question-list-section">
-                <h3>Questions</h3>
-                <hr>
-
-                <!-- <p>Use the <b>editor</b> below to set up your own Question List.</p> -->
-
-                <div class="question-list-panel">
-                    <!-- <label id="empty-list-warning">[List is empty]</label> -->
-                    <div class="question-list" id="questionList">
-                        <div id="demonstrativeQuestion" style="display: none;">
-                            <div class="question-attributes">
-                                <label class="question-no">1.</label>
-                                <input class="question-text" placeholder="Insert question here">
-                            </div>
-                            
-                            <div class="question-options">
-                                <div class="question-option">
-                                    <label id="option-id" class="option-alpha">a)</label>
-                                    <input class="option-text" placeholder="Insert option here">
-                                </div>
-                            
-                            </div>
+                        
+                            <fieldset class="input-design-one">
+                                <legend>Time</legend>
+                                <input name="time" type="text" class="input-design-one" required>
+                            </fieldset>
+                            <fieldset class="input-design-one">
+                                <legend>Unit</legend>
+                                <select name="unit" class="input-design-one" id="quiz-time-unit-list">
+                                    <!-- <option>---</option> -->
+                                    <option>seconds</option>
+                                    <option>minutes</option>
+                                    <option>hours</option>
+                                </select>
+                            </fieldset>
                         </div>
 
-
-                        <div style="display: flex;" class="question">
-                            <div class="question-attributes">
-                                <label class="question-no">1.</label>
-                                <input class="question-text" placeholder="Insert question here">
-                            </div>
-                            
-                            <div class="question-options">
-                                <div class="question-option">
-                                    <label id="option-id" class="option-alpha">a)</label>
-                                    <input class="option-text" placeholder="Insert option here">
+                            @if ($errors->has('time'))
+                                <div class="alert-text-image-wrapper">
+                                    <img src="{{ URL::asset('icons/warning.png') }}" width="20px">
+                                    <label class="alert-text">{{ $errors->first('time') }}</label>
                                 </div>
-                            
-                            </div>
-                        </div>
-
-            
-                    </div>
-
-                    <div class="insert-question-button-wrapper">
-                        <label><i>Insert Question ('alt + n')</i></label>
-                        <img class="insert-question-icon" src="{{ URL::asset('/icons/insert_element.png') }}" width="50px" id="insertQuestionButton">
+                            @endif
+                        
                     </div>
                 </div>
+                <fieldset class="general-info-form-input subject-tag-list input-design-one">
+                    <legend>Subject</legend>
+                    <label class="quiz-subject">Math</label>
+                    <label class="quiz-subject">Geography</label>
+                    <label class="quiz-subject">Language</label>
+                    <label class="quiz-subject">History</label>
+                    <label class="quiz-subject">Science</label>
+                    <label class="quiz-subject">Biology</label>
+                    <label class="quiz-subject">Chemistry</label>
+                    <label class="quiz-subject">Physics</label>
+                </fieldset>
             </section>
-        </div>
-    </form>
+        </section>
 
+        <section class="question-list-section" style="display: none;">
+            <h3>Question List</h3>
+            <hr>
+            <div class="question-list-panel">
+                <div class="question-list" id="questionList">
+                    <div id="demonstrativeQuestion" style="display: none;">
+                        <div class="question-attributes">
+                            <label class="question-no">1.</label>
+                            <input class="question-text" placeholder="Insert question here">
+                        </div>
+                        <div class="question-options">
+                            <div class="question-option">
+                                <label class="option-alpha">a)</label>
+                                <input class="option-text" placeholder="Insert option here">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;" class="question">
+                        <div class="question-attributes">
+                            <label class="question-no">1.</label>
+                            <input class="question-text" placeholder="Insert question here">
+                        </div>
+                        <div class="question-options">
+                            <div class="question-option">
+                                <label class="option-alpha">a)</label>
+                                <input class="option-text" placeholder="Insert option here">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="insert-question-button-wrapper">
+                    <label><i>Insert Question ('alt + n')</i></label>
+                    <img class="insert-question-icon" src="{{ URL::asset('/icons/insert_element.png') }}" width="50px" id="insertQuestionButton">
+                </div>
+            </div>
+        </section>
 
-    <!-- <button class="submit-button">Submit</button> -->
-</div>
+        <section id="submission-section" style="display: none;">
+            <h3>Submission</h3>
+            <hr>
+        </section>
+
+    </div>
+
+</form>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Navigation buttons
+        // const prevButton = document.getElementById('prev-panel-button');
+        const nextButton = document.getElementById('next-panel-button');
+        const prevArrow = document.querySelector('.nav-menu-panel').querySelector('.arrow-left');
+        const nextArrow = document.querySelector('.nav-menu-panel').querySelector('.arrow-right');
+
+        const panels = document.querySelectorAll('#section-wrapper > section');
+        const menuOptions = document.querySelector('.nav-menu-options').querySelectorAll('label');
+
+        let currentPanelIndex = 0;
+
+        function showPanel(index) {
+            panels.forEach((panel, i) => {
+                panel.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function changeSelectedOption(index){
+            menuOptions.forEach((option, i) => {
+                if (i === index){
+                    option.classList.add('selected-menu-option')
+                }
+                else{
+                    option.classList.remove('selected-menu-option');
+
+                }
+            });
+        }
+
+        function processPrevPanelRequest(){
+            if (currentPanelIndex > 0) {
+                currentPanelIndex--;
+                showPanel(currentPanelIndex);
+                changeSelectedOption(currentPanelIndex);
+            }
+        }
+
+        function processNextPanelRequest(){
+            if (currentPanelIndex < panels.length - 1) {
+                currentPanelIndex++;
+                showPanel(currentPanelIndex);
+                changeSelectedOption(currentPanelIndex);
+            }
+        }
+
+        // prevButton.addEventListener('click', processPrevPanelRequest);
+        prevArrow.addEventListener('click', processPrevPanelRequest);
+
+        // nextButton.addEventListener('click', processNextPanelRequest);
+        nextArrow.addEventListener('click', () => {
+            const form = document.getElementById('editor-panel-form');
+            if (form.reportValidity()){
+                if(currentPanelIndex === panels.length - 1) {
+                    form.submit();
+                }
+                else{
+                    processNextPanelRequest();
+                }
+            }
+        });
+
+
+        showPanel(currentPanelIndex); // Initially show the first panel
+
+        document.getElementById('editor-panel-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Submission panel (last panel in the sequence) is reached
+            if (currentPanelIndex === panels.length - 1){
+                const subjectTagList = document.querySelector('.subject-tag-list');
+                const selectedLabels = document.querySelectorAll('.quiz-subject-selected');
+                const allLabels = Array.from(subjectTagList.children);
+                const selectedIndices = Array.from(selectedLabels).map(label => {
+                    return allLabels.indexOf(label);
+                });
+
+                document.getElementById('selected-subjects').value = JSON.stringify(selectedIndices);
+
+                const difficultyList = document.getElementById('quiz-difficulty-list');
+         
+                document.getElementById('selected-difficulty').value = difficultyList.selectedIndex;
+                // document.getElementById('selected-difficulty').type = 'text';
+
+                const timeUnitList = document.getElementById('quiz-time-unit-list');
+                document.getElementById('question-time-unit').value = timeUnitList.selectedIndex;
+
+
+                const questions = [];
+                const questionList = document.querySelectorAll('.question-list .question');
+                questionList.forEach((questionElem, index) => {
+                    const questionText = questionElem.querySelector('.question-text').value;
+                    const options = [];
+                    questionElem.querySelectorAll('.question-option').forEach(optionElem => {
+                        options.push(optionElem.querySelector('.option-text').value);
+                    });
+                    questions.push({
+                        questionText: questionText,
+                        options: options
+                    });
+                });
+                document.getElementById('questionsData').value = JSON.stringify(questions);
+
+                event.target.submit(); // Submit the form
+            }
+            else{
+                processNextPanelRequest();
+            }
+
+            
+        });
+        
+    });
+
+    document.getElementById('insertQuestionButton').addEventListener('click', addNewQuestion);
+
+    document.querySelectorAll('.question-option').forEach(option => {
+        attachOptionEventListeners(option);
+    });
+
     function updateOptionId(option, operation) {
         if (option) {
             const optionId = option.querySelector('.option-alpha');
@@ -171,7 +307,6 @@
             }
         }
     }
-
 
     function processOptionKeyEvent(option){
         if(option){
@@ -199,100 +334,46 @@
                     }
                 }
                 else if (event.key === "Backspace" && option.querySelector('.option-text').value === ''){
-                    // option.style.display = 'none';
                     const prevOption = option.previousElementSibling;
                     if (prevOption) {
-                        // const parent = option.parentElement;
                         option.remove(); // Remove the element from the DOM
-                        // updateOptionId(prevOption.nextSibling, 0); // Decrement IDs for following options
                         prevOption.querySelector('.option-text').focus();
                         event.preventDefault(); // Prevent default backspace action
                         event.stopPropagation(); // Stop event propagation
                         updateOptionId(prevOption.nextSibling, 0); // Decrement IDs for following options
-
                     }
                 }
                 else if (event.altKey && event.key === 'n') {
-                    // console.log("pressed n!");
-                    // Your logic when Ctrl + N is pressed
-                    
                     event.preventDefault(); // Prevent default browser behavior (e.g., opening a new window/tab)
                     addNewQuestion();
                 }
-
             });
         }
     }
-
 
     function attachOptionEventListeners(option) {
         processOptionKeyEvent(option);
     }
 
-    function addNewQuestion(option) {
-        // console.log('dssd');
-    
+    function addNewQuestion() {
         const questionList = document.getElementById('questionList');
         const demonstrativeQuestion = document.getElementById('demonstrativeQuestion');
         const newQuestion = demonstrativeQuestion.cloneNode(true);
         newQuestion.style.display = 'flex';
 
         const questionCount = questionList.getElementsByClassName('question').length + 1;
-        newQuestion.querySelector('.question-no').textContent = `${questionCount - 1}.`;
-        // newQuestion.querySelectorAll('input').forEach(input => input.value = '');
+        newQuestion.querySelector('.question-no').textContent = `${questionCount}.`;
         questionList.appendChild(newQuestion);
         newQuestion.querySelector('.question-text').focus();
-    
 
         newQuestion.querySelectorAll('.question-option').forEach(option => {
             attachOptionEventListeners(option);
         });
 
         document.getElementById('empty-list-warning').style.display = 'none';
-    };
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
     
-        document.getElementById('insertQuestionButton').addEventListener('click', addNewQuestion);
-
-        document.querySelectorAll('.question-option').forEach(option => {
-            attachOptionEventListeners(option);
-        });
-    });
-
-    document.getElementById('editor-panel-form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const subjectTagList = document.querySelector('.subject-tag-list');
-        const selectedLabels = document.querySelectorAll('.quiz-subject-selected');
-        const allLabels = Array.from(subjectTagList.children);
-        const selectedIndices = Array.from(selectedLabels).map(label => {
-            return allLabels.indexOf(label);
-        });
-
-        document.getElementById('selected-subjects').value = JSON.stringify(selectedIndices);
-
-        const difficultyList = document.querySelector('.quiz-difficulty-list select');
-        document.getElementById('selected-difficulty').value = difficultyList.selectedIndex;
-        document.getElementById('selected-difficulty').type = 'text';
-
-        const questions = [];
-        const questionList = document.querySelectorAll('.question-list .question');
-        questionList.forEach((questionElem, index) => {
-            const questionText = questionElem.querySelector('.question-text').value;
-            const options = [];
-            questionElem.querySelectorAll('.question-option').forEach(optionElem => {
-                options.push(optionElem.querySelector('.option-text').value);
-            });
-            questions.push({
-                questionText: questionText,
-                options: options
-            });
-        });
-        document.getElementById('questionsData').value = JSON.stringify(questions);
-
-        event.target.submit(); // Submit the form
-    });
 </script>
 
 @endsection

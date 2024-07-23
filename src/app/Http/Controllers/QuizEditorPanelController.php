@@ -33,8 +33,9 @@ class QuizEditorPanelController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string|min:6|max:50|unique:quizzes,name',
-            'difficulty' => 'required|integer',
+            'difficulty' => 'integer',
             'time' => 'required|integer|max:99999',
+            'time-unit' => 'required|integer',
             'subjects' => 'required|string',
             'questions' => 'required|string'
         ], $messages);
@@ -42,10 +43,22 @@ class QuizEditorPanelController extends Controller
         // Log validated data to see what is being passed
         Log::info('Validated Data: ', $validatedData);
 
+        
+        
+
         DB::transaction(function () use ($validatedData, $request) {
+            $time_unit = 1;
+        
+            if ($validatedData['time-unit'] === '1'){
+                $time_unit = 60;
+            }
+            else if ( $validatedData['time-unit'] === '2'){
+                $time_unit = 3600;
+            }
+
             $new_quiz = Quiz::create([
                 'name' => $validatedData['name'],
-                'time' => $validatedData['time'],
+                'time' => $validatedData['time'] * $time_unit,
                 'user_id' => auth()->id(),
                 'difficulty_id' => $validatedData['difficulty'] + 1,
             ]);

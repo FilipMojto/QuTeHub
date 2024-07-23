@@ -14,26 +14,23 @@ body{
 }
 
 .content-wrapper {
-    /* max-height: 100vh;        Maximum height of 70% of viewport height */
-    width: 100%;
-    /* padding: 10px 0; */
+    /* width: 100%; */
+    /* display: inline-block; */
     box-sizing: border-box;  /* Include padding in height calculation */
     overflow-y: auto;        /* Scroll if content overflows */
-    flex: 1;
-    /* overflow: visible; */
     height: 100%;
-    align-content: center;
+    /* align-content: center; */
     font-size: inherit;
     background-color: inherit;
-    padding-left: 15px;
-
-    padding-right: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    /* padding-bottom: 20em; */
     background-color: hsl(0, 0%, 20%);
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 600px){
     body{
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 }
 

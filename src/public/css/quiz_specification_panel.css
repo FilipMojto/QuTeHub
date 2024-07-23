@@ -1,30 +1,135 @@
 /* quiz-specification-panel */
 /*      general */
 
-/* - */
+
 .quiz-specification-panel{
-    /* padding: 20px; */
+    display: block;
     box-sizing: border-box;
-    /* background-color: hsl(0, 0%, 20%); */
-    /* overflow-y: hidden; */
-    /* background-color: red; */
-    height: fit-content;
-    /* padding: 0px 10px; */
+    height: 100%;
     font-size: inherit;
+    margin-top: 0;
+    padding: 0;
+    /* background-color: red; */
+}
+
+.quiz-editor-nav-menu{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0px 10px;
+    align-items: center;
+    margin-top: 15px;
+    background-color: #515151;
+    position: relative;
+    z-index: 100;
+    border-radius: 15px;
+    grid-template-areas: "a b c";
+    padding: 10px 10px;
+}
+
+.quiz-editor-nav-menu .submit-button{
+    margin-left: auto;
+}
+
+.quiz-editor-nav-menu > .header-menu-wrapper{
+
+    flex: 0.70;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+.quiz-editor-nav-menu .nav-menu-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2vw;
+    align-items: center;
+}
+
+.quiz-editor-nav-menu button{
+    flex: 0.30;
+}
+
+
+.nav-menu-panel > .arrow{
+    cursor: pointer;
+    /* height: calc(0.3em + 1.5vh); */
+    /* width: auto; */
+    width: clamp(3px, 1.2vw, 10px);
+    height: clamp(3px, 1.2vw, 10px);
+}
+
+
+.nav-menu-options {
+    font-size: 0.8em;
+    display: flex;
+}
+
+.nav-menu-options > .menu-option-wrapper > .menu-option{
+    padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    /* background-color: red; */
+    /* margin: 0px 5px; */
+    padding: 0px 5px;
+    border-bottom: none;
+    position: relative;
+}
+
+.menu-option-wrapper{
+    position: relative;
+}
+
+
+
+.selected-menu-option::after{
+    /* border-bottom: 2px solid #2fed00 !important; */
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2fed00 !important;
+    /* width: 100%; */
+    width: 90%;
+    left: 5%;
+    box-sizing: border-box;
+    padding: 0 30px;
+    /* left: 50%; */
+    top: 105%;
+    margin: auto;
+}
+
+
+.nav-menu-options > .menu-option-wrapper:not(:last-child) > label{
+    border-right: 2px solid;
+}
+
+.nav-menu-panel > .arrow-left, .nav-menu-panel > .arrow-right,
+.nav-menu-options > .menu-option-wrapper:not(:last-child) > label
+
+{
+    border-color: #d2d1d1;
+}
+
+.input-alert-wrapper{
+    position: relative;
+}
+
+.input-alert-wrapper > .alert-text-image-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
     /* background-color: red; */
 }
 
 
-.quiz-specification-panel .header-submit-button-wrapper{
+.alert-text-image-wrapper > .alert-text{
+    font-size: 0.6em;
+    color: red;
+    margin: 0px 3px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    /* background-color: red; */
-    /* max-width: 1390px; */
-    /* background-color: red; */
 }
 
 /* .quiz-specification-panel .header-submit-button-wrapper{
@@ -32,43 +137,60 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: clamp(500px, 70vw, 2500px);
-    /* margin-right: 100px; */
-    /* background-color: #18ed00; */
-/* } */ */
+    width: 100%;
+    margin: 0;
+} */
+
+
 
 .quiz-specification-panel p {
     font-size: 1em;
 }
 
-.quiz-specification-panel .section-wrapper{
-    height: fit-content;
-    /* background-color: red; */
-    /* display: inline; */
-    display: flex;
-    flex-direction: row; 
-    gap: 20px;
+.quiz-specification-panel #section-wrapper{
+    background-color: rgb(45, 45, 45);
+    padding: 15px 0;
+    position: relative;
+    top: -8px;
+    border-radius: 0px 0px 15px 15px;
+
 
     /* background-color: green; */
     /* max-width: 1px; */
 }
 
 /* --- */
-.general-info-section hr, .question-list-section hr {
+
+#section-wrapper > section > hr{
     border-color: #444444;
     margin-bottom: 15px;
 }
 
+
+
 /* -- */
 .general-info-section{
-    height: 50%;
     font-size: inherit;
     /* background-color: green; */
     height: fit-content;
     width: fit-content;
+    /* background-color: green; */
+    /* padding-bottom: 50px; */
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: #444444;
+    padding: 0px 10px;
+    margin: auto;
+    
+    /* background-color: green; */
     /* flex: 1; */
     /* width: fit-content; */
     /* background-color: red; */
+}
+
+.general-info-section {
+    /* margin-top: -0.0001em; */
+    padding-bottom: 30px;
 }
 
 .general-info-section p, .question-list-section p{
@@ -78,113 +200,103 @@
 /* ####         Moving elements from top so that they are the same vertical level            ####
    ####         This is necessary because fieldset legend additional space from top.         ####*/
 
-.name-difficulty-time-panel .general-info-form-input:first-child, .subject-tag-list{
-    position: relative;
-    top: -0.64em;
-}
+
+/* ############################ general-info-form ############################ */
 
 
-/* --- */
 .general-info-form{
     display: flex;
     flex-direction: row;
-    /* align-items: stre; */
-    align-items: flex-start;
-    /* background-color: red; */
     gap: 15px;
-    /* margin: 30px 0px; */
-    height: clamp(60%, 280px, 65%);
-    /* background-color: red; */
-    /* background-color: red; */
-    /* background-color: red; */
+    height: clamp(100px, 35vh, 250px);
     box-sizing: border-box;
     font-size: inherit;
+    position: relative;                     /* This property is required so that
+                                               general-info-form and subject-tag-list are
+                                               at same vertical level.*/
+    top: -10px;                    
 }
 
-/* ---- */
-/* .general-info-form input, .general-info-form select{
-    padding: 10px;
-    font-size: 0.8em;
-} */
-
-/* ---- */
-/* .general-info-form legend{
-    font-size: 0.8em;
-} */
 
 
-/* name-difficulty-time-panel - constraints */
+.general-info-form fieldset > legend{
+    font-size: 0.9em;
+}
 
-    /* 1) Last child of class .general-info-form-input is ignored when applying 100%
-          width on its direct select and input elements */
+.quiz-inputs-panel, .subject-tag-list{
+    gap: 15px;
+}
 
+/* ############################ quiz-inputs-panel ############################ */
 
-.general-info-form .name-difficulty-time-panel{
-    box-sizing: border-box;
-    /* background-color: red; */
+.quiz-inputs-panel{
     display: flex;
     flex-direction: column;
-    padding: 0;
-    height: 100%;
-    /* background-color: red; */
     justify-content: space-between;
-    color: white;
-    margin: 0;
-    box-sizing: border-box;
-    /* flex: 1; */
-}
-
- .general-info-form-input{
-    font-size: 1em;
-    color: inherit;
-    /* background-color: red; */
+    height: 100%;
+    /* gap: 15px; */
+    width: 250px;                                 
 }
 
 
-.general-info-form-input > legend {
-    font-size: 0.8em;
-    color: inherit;
-}
-
-
-.general-info-form-input > input, .general-info-form-input > select{
-    color: inherit;
-    font-size: 0.9em;
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
-
-
-.general-info-form-input:not(:last-child) > input, .general-info-form-input:not(:last-child) > select{
+.quiz-inputs-panel select {
     width: 100%;
 }
 
-.name-difficulty-time-panel .quiz-time-field {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* background-color: red; */
+
+.quiz-inputs-panel > fieldset, .quiz-inputs-panel > .time-value-unit-wrapper > fieldset{
+    height: clamp(5px, 20vh, 40px);
+  
 }
 
-.quiz-time-field input{
-    max-width: 5em;
+/* This style ensures all inputs or selects merge with their fieldset container */
+/* Also widgets needs to be indented from top because of legends */
+.quiz-inputs-panel fieldset > input, .quiz-inputs-panel fieldset > select{
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    font-size: 0.8em;
+    /* background-color: red; */
+    /* margin-top: 0.00000001em; */
 }
+
+.quiz-inputs-panel .time-value-unit-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.time-value-unit-wrapper > fieldset:first-child{
+    flex: 0.40;
+}
+
+.time-value-unit-wrapper > fieldset:first-child > input{
+    max-width: 2.8em;
+}
+
+.time-value-unit-wrapper > fieldset:nth-child(2){
+    flex: 0.60;
+}
+
+
+
+/* ############################ subject-tag-list ############################ */
+
 
 .general-info-form .subject-tag-list{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    padding: 15px;
-    gap: 5px 1.0em;
+    /* padding: 15px; */
+    gap: auto 1.0em;
     height: 100%;
     /* width: clamp(200px, 75vw, 400px); */
     box-sizing: border-box;
     font-size: 1em;
     margin: 0;
-    /* flex: 1; */
+    width: 100%;
 }
-
 
 .subject-tag-list .quiz-subject{
     background-color: #c9c9c9;
@@ -222,7 +334,8 @@
 }
 
 
-/* ------------------------------------------ */
+/* ############################ question-list-section ############################ */
+
 
 .question-list-section{
     flex: 1;
@@ -230,6 +343,8 @@
     /* background-color: red; */
     padding-bottom: 10px;
     box-sizing: border-box;
+    border: 1px solid;
+    border-color: #444444;
 }
 
 
@@ -243,8 +358,9 @@
     box-sizing: border-box;
     /* align-items: center; */
     overflow-y: hidden;
-    resize: vertical;
-    min-height: fit-content;
+    resize: both;
+    min-height: 250px;
+    min-width: fit-content;
     font-size: inherit;
     font-family: 'Courier New', Courier, monospace;
     /* margin-bottom: 100px; */
@@ -285,7 +401,7 @@
     gap: 20px;
     color: rgb(255, 255, 255);
     font-family: inherit;
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin-bottom: 20px;
 }
 
@@ -323,6 +439,8 @@
     margin: 0;
     font-weight: bold;
 }
+
+
 
 .question .question-text, .question .option-text{
     outline: none;
@@ -381,25 +499,27 @@
 
 
 
-.header-submit-button-wrapper .submit-button{
+.quiz-editor-nav-menu .submit-button{
     /* margin: 10px auto; */
     /* padding: 30px 100px; */
-    padding: 10px 75px;
+    padding: 5px 50px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-family: inherit;
     max-width: fit-content;
     text-align: center;
     box-sizing: border-box;
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-    display: block;
+    display: inline-block;
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1200px){
     .quiz-specification-panel .section-wrapper{
         /* height: clamp(600px, 75vh, 1650px); */
         flex-direction: column;
+        justify-content: flex-start;
+        /* gap: 0; */
         /* background-color: red; */
     }
 }
@@ -408,18 +528,19 @@
 
 
     .general-info-form {
-        height: fit-content;
+        /* height: fit-content; */
         flex-direction: row;
-        height: clamp(150px, 50vh, 150px);
+        height: clamp(100px, 50vh, 150px);
     }
-    
+
     .subject-tag-list, .name-difficulty-time-panel {
         height: 100%;
+        width: 50%;
         /* height: 50%; */
         flex: 1;
     }
 
- 
+
 
     .general-info-form .subject-tag-list{
         grid-template-columns: repeat(2, 1fr);
@@ -429,6 +550,36 @@
 @media only screen and (max-width: 700px){
     .quiz-specification-panel .header-submit-button-wrapper{
         flex-direction: column;
-        align-items: flex-start;       
+        align-items: flex-start;
+    }
+
+    .general-info-form{
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+    }
+
+    .quiz-editor-nav-menu {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+        "a c"
+        "b b";
+        gap: 0;
+        align-items: center;
+        justify-items: start;
+        /* align-content: center; */
+        /* justify-items: center;  This centers the items within the grid cells */
+        /* margin: 15px auto; */
+        /* background-color: red; */
+    }
+    
+    .quiz-editor-nav-menu .submit-button {
+        justify-self: start;
+        margin: 0;
+    }
+
+    .nav-menu-panel{
+        justify-self: center;
     }
 }

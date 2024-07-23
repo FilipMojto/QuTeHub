@@ -53,6 +53,8 @@ const icon = document.querySelector('.account-icon');
         } else {
             console.error('No next sibling element found.');
         }
+
+        const wrapper = document.querySelector('.account-icon-options-wrapper').classList.toggle('account-icon-options-wrapper-clicked');
     });
 
 

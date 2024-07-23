@@ -32,7 +32,7 @@
         @if ($user)
 
             <div class="account-icon-options-wrapper input-design-one">
-                <img class="account-icon" src="{{ URL::asset('/icons/user_account_icon.png') }}" width="35px">
+                <img class="account-icon" src="{{ URL::asset('/icons/user_account_icon.png') }}">
 
                 <div class="account-option-list">
 
@@ -42,8 +42,11 @@
                     <hr>
             
                     <button class="submit-button"  onclick="location.assign('/quiz-specification')">New Quiz</button>
-            
+                    
+                    <button class="submit-button">My Quizzes</button>
+
                     <button class="submit-button" onclick="location.assign('/logout')">Log Out</button>
+
                 </div>
                 
             </div>
