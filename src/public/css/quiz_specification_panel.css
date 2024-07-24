@@ -6,9 +6,11 @@
     display: block;
     box-sizing: border-box;
     height: 100%;
+    width: 90%;
     font-size: inherit;
     margin-top: 0;
     padding: 0;
+    /* margin: auto; */
     /* background-color: red; */
 }
 
@@ -18,7 +20,7 @@
     gap: 0px 10px;
     align-items: center;
     margin-top: 15px;
-    background-color: #515151;
+    background: linear-gradient(rgb(109, 109, 109), black);
     position: relative;
     z-index: 100;
     border-radius: 15px;
@@ -77,6 +79,7 @@
     padding: 0px 5px;
     border-bottom: none;
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .menu-option-wrapper{
@@ -149,14 +152,10 @@
 
 .quiz-specification-panel #section-wrapper{
     background-color: rgb(45, 45, 45);
-    padding: 15px 0;
+    padding: 25px 15px 15px 15px;
     position: relative;
-    top: -8px;
+    top: -13px;
     border-radius: 0px 0px 15px 15px;
-
-
-    /* background-color: green; */
-    /* max-width: 1px; */
 }
 
 /* --- */
@@ -205,8 +204,12 @@
 
 
 .general-info-form{
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
+
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 1fr;
+    grid-template-areas: "a b c";
     gap: 15px;
     height: clamp(100px, 35vh, 250px);
     box-sizing: border-box;
@@ -214,13 +217,13 @@
     position: relative;                     /* This property is required so that
                                                general-info-form and subject-tag-list are
                                                at same vertical level.*/
-    top: -10px;                    
+    top: -10px;               
 }
 
 
 
 .general-info-form fieldset > legend{
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 
 .quiz-inputs-panel, .subject-tag-list{
@@ -235,7 +238,8 @@
     justify-content: space-between;
     height: 100%;
     /* gap: 15px; */
-    width: 250px;                                 
+    width: 250px;
+    grid-area: a;                                 
 }
 
 
@@ -251,12 +255,12 @@
 
 /* This style ensures all inputs or selects merge with their fieldset container */
 /* Also widgets needs to be indented from top because of legends */
-.quiz-inputs-panel fieldset > input, .quiz-inputs-panel fieldset > select{
+.quiz-inputs-panel fieldset > input, .quiz-inputs-panel fieldset > select,
+fieldset > textarea {
     outline: 0;
-    border: 0;
-    box-shadow: none;
+    border: 0 !important;
+    box-shadow: none !important;
     font-size: 0.8em;
-    /* background-color: red; */
     /* margin-top: 0.00000001em; */
 }
 
@@ -285,6 +289,7 @@
 
 
 .general-info-form .subject-tag-list{
+    grid-area: b;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
@@ -299,8 +304,8 @@
 }
 
 .subject-tag-list .quiz-subject{
-    background-color: #c9c9c9;
-    color: #444444;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 20px;
     text-align: center;
     align-content: center;
@@ -334,6 +339,26 @@
 }
 
 
+
+
+/* ############################ quiz-description-area ############################ */
+
+.quiz-description-area{
+    /* height: 100%; */
+    display: flex;
+    grid-area: c;
+}
+
+.quiz-description-area textarea{
+    resize: none;
+    overflow-y: scroll;
+    width: 100%;
+    min-height: 10em;
+    /* background-color: red; */
+    /* height: 500px; */
+}
+
+
 /* ############################ question-list-section ############################ */
 
 
@@ -343,8 +368,8 @@
     /* background-color: red; */
     padding-bottom: 10px;
     box-sizing: border-box;
-    border: 1px solid;
-    border-color: #444444;
+    /* border: 1px solid;
+    border-color: #444444; */
 }
 
 
@@ -358,7 +383,7 @@
     box-sizing: border-box;
     /* align-items: center; */
     overflow-y: hidden;
-    resize: both;
+    resize: horizontal;
     min-height: 250px;
     min-width: fit-content;
     font-size: inherit;
@@ -547,6 +572,17 @@
     }
 }
 
+@media only  screen and (max-width: 1200px){
+    .general-info-form{
+        grid-template-columns: repeat(2, 1fr);
+        height: clamp(100px, 55vh, 450px);
+        grid-template-areas:
+        "a b"
+        "c c";
+        /* padding-bottom: 10px; */
+    }
+}
+
 @media only screen and (max-width: 700px){
     .quiz-specification-panel .header-submit-button-wrapper{
         flex-direction: column;
@@ -554,10 +590,15 @@
     }
 
     .general-info-form{
-        flex-direction: column;
-        justify-content: center;
-        height: fit-content;
+        height: clamp(100px, 85vh, 700px);
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+        "a"
+        "b"
+        "c";
     }
+
+    
 
     .quiz-editor-nav-menu {
         display: grid;

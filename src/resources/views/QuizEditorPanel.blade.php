@@ -20,7 +20,7 @@
                     
                     <div class="menu-option-wrapper"><label for="" class="menu-option selected-menu-option">Parameters</label></div>
                     <div class="menu-option-wrapper"><label for="" class="menu-option">Question List</label></div>
-                    <div class="menu-option-wrapper"><label for="" class="menu-option">Submissions</label></div>
+                    <div class="menu-option-wrapper"><label for="" class="menu-option">Submission</label></div>
 
                     <!-- <label class="menu-option selected-menu-option">Parameters</label>
                     <label class="menu-option">Question List</label>
@@ -83,7 +83,7 @@
                         
                             <fieldset class="input-design-one">
                                 <legend>Time</legend>
-                                <input name="time" type="text" class="input-design-one" required>
+                                <input name="time" type="text" class="input-design-one" required pattern="^[0-9]*$">
                             </fieldset>
                             <fieldset class="input-design-one">
                                 <legend>Unit</legend>
@@ -116,7 +116,15 @@
                     <label class="quiz-subject">Chemistry</label>
                     <label class="quiz-subject">Physics</label>
                 </fieldset>
+
+                <fieldset class="general-info-form-input quiz-description-area input-design-one">
+                    <legend>Description</legend>
+                    <textarea class="input-design-one"></textarea>
+                    
+                </fieldset>
             </section>
+
+
         </section>
 
         <section class="question-list-section" style="display: none;">
@@ -124,7 +132,7 @@
             <hr>
             <div class="question-list-panel">
                 <div class="question-list" id="questionList">
-                    <div id="demonstrativeQuestion" style="display: none;">
+                    <div id="demonstrativeQuestion" class="question" style="display: none;">
                         <div class="question-attributes">
                             <label class="question-no">1.</label>
                             <input class="question-text" placeholder="Insert question here">
@@ -166,9 +174,31 @@
 </form>
 
 <script>
+    /**
+     * @param {string} name of element to validate
+     * @param {Array<string>} array of classes element needs to contain
+     * @returns {Boolean} true if element was validated successfully false otherwise;
+     * 
+     **/
+    function validateElement(element, classList){
+        if (!element){
+            return false;
+        }
+
+        for(class_ in classList){
+            if (!element.classList.contains(class_)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+// ############################ quiz-editor --- dynamic panel switching ############################ //
+
+
     document.addEventListener('DOMContentLoaded', () => {
-        // Navigation buttons
-        // const prevButton = document.getElementById('prev-panel-button');
+
         const nextButton = document.getElementById('next-panel-button');
         const prevArrow = document.querySelector('.nav-menu-panel').querySelector('.arrow-left');
         const nextArrow = document.querySelector('.nav-menu-panel').querySelector('.arrow-right');
@@ -231,6 +261,11 @@
 
         showPanel(currentPanelIndex); // Initially show the first panel
 
+
+
+// ############################ editor-panel-form --- submission process ############################ //
+
+
         document.getElementById('editor-panel-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
             
@@ -280,13 +315,30 @@
         
     });
 
+
+
+// ############################ question-list-editor --- event processing ############################ //
+
+
+
     document.getElementById('insertQuestionButton').addEventListener('click', addNewQuestion);
 
     document.querySelectorAll('.question-option').forEach(option => {
-        attachOptionEventListeners(option);
+        processOptionKeyEvent(option);
     });
 
+
+    document.querySelectorAll('.question-text').forEach(processOptionKeyEvent);
+    
+
     function updateOptionId(option, operation) {
+
+    // this function updates question-option ordinal number based on operation request. This update is carried out on
+    // current option and on all its subsequent option siblings.
+    // operation: int
+    //  a) 0 - decrement no.
+    //  b) 1 - increment no.
+
         if (option) {
             const optionId = option.querySelector('.option-alpha');
             const currentCharCode = optionId.textContent.charCodeAt(0);
@@ -309,6 +361,16 @@
     }
 
     function processOptionKeyEvent(option){
+
+        // this function contains processing logic for all option-text or question-text elements
+        // function contains all required keydown events and their mapped procedures
+
+        // if (!validateElement(element=option, classList=['question-text', 'option-text'])){
+        //     console.log("Received non-existing or illegal element!");
+        //     return;
+        // }
+
+
         if(option){
             option.addEventListener('keydown', function(event) {
                 if (event.key === "Enter") {
@@ -317,20 +379,39 @@
                     const newOptionText = newOption.querySelector('.option-text');
                     newOptionText.value = "";
                     option.parentElement.insertBefore(newOption, option.nextSibling);
-                    attachOptionEventListeners(newOption);
+                    processOptionKeyEvent(newOption);
                     newOptionText.focus();
                     updateOptionId(newOption, 1);
                 }
                 else if (event.key === "ArrowDown") {
-                    const nextOption = option.nextElementSibling;
-                    if (nextOption) {
-                        nextOption.querySelector('.option-text').focus();
+    
+                    if (option.className === 'question-option') {
+                        const nextElement = option.nextElementSibling;
+                        if (nextElement){
+                            nextElement.querySelector('.option-text').focus();
+                        }
+                        else{
+                            option.parentElement.parentElement.nextElementSibling.querySelector('.question-text').focus();
+                        }
+                    }
+                    else{
+                        option.parentElement.nextElementSibling.querySelector('.question-option > .option-text').focus();
                     }
                 }
                 else if (event.key === "ArrowUp") {
-                    const prevOption = option.previousElementSibling;
-                    if (prevOption) {
-                        prevOption.querySelector('.option-text').focus();
+
+                
+                    if (option.className === 'question-option') {
+                        const prevElement = option.previousElementSibling;
+                        if (prevElement){
+                            prevElement.querySelector('.option-text').focus();
+                        }
+                        else{
+                            option.parentElement.previousElementSibling.querySelector('.question-text').focus();
+                        }
+                    }
+                    else{
+                        option.parentElement.parentElement.previousElementSibling.querySelector('.question-option:last-child > .option-text').focus();
                     }
                 }
                 else if (event.key === "Backspace" && option.querySelector('.option-text').value === ''){
@@ -351,29 +432,29 @@
         }
     }
 
-    function attachOptionEventListeners(option) {
-        processOptionKeyEvent(option);
-    }
+
 
     function addNewQuestion() {
         const questionList = document.getElementById('questionList');
+        
         const demonstrativeQuestion = document.getElementById('demonstrativeQuestion');
         const newQuestion = demonstrativeQuestion.cloneNode(true);
         newQuestion.style.display = 'flex';
 
-        const questionCount = questionList.getElementsByClassName('question').length + 1;
+        const questionCount = questionList.getElementsByClassName('question').length;
         newQuestion.querySelector('.question-no').textContent = `${questionCount}.`;
         questionList.appendChild(newQuestion);
+        newQuestion.querySelectorAll('.question-text').forEach(processOptionKeyEvent);
         newQuestion.querySelector('.question-text').focus();
 
         newQuestion.querySelectorAll('.question-option').forEach(option => {
-            attachOptionEventListeners(option);
+            processOptionKeyEvent(option);
         });
 
-        document.getElementById('empty-list-warning').style.display = 'none';
+        // document.getElementById('empty-list-warning').style.display = 'none';
     }
 
-    
+
 </script>
 
 @endsection

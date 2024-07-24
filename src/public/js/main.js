@@ -72,63 +72,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const insertButton = document.getElementById('insertQuestionButton');
-    const questionList = document.getElementById('questionList');
-    const demonstrativeQuestion = document.getElementById('demonstrativeQuestion');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const insertButton = document.getElementById('insertQuestionButton');
+//     const questionList = document.getElementById('questionList');
+//     const demonstrativeQuestion = document.getElementById('demonstrativeQuestion');
     
-    // Function to add new question
-    const addNewQuestion = () => {
-        const newQuestion = demonstrativeQuestion.cloneNode(true);
-        const questionCount = questionList.getElementsByClassName('question').length;
-        newQuestion.querySelector('.question-no').textContent = `${questionCount + 1}.`;
-        newQuestion.querySelectorAll('input').forEach(input => input.value = '');
-        questionList.appendChild(newQuestion);
+//     // Function to add new question
+//     const addNewQuestion = () => {
+//         const newQuestion = demonstrativeQuestion.cloneNode(true);
+//         const questionCount = questionList.getElementsByClassName('question').length;
+//         newQuestion.querySelector('.question-no').textContent = `${questionCount + 1}.`;
+//         newQuestion.querySelectorAll('input').forEach(input => input.value = '');
+//         questionList.appendChild(newQuestion);
 
-        // Add event listener for the Enter key to the new question options
-        newQuestion.querySelectorAll('.option-text').forEach(input => {
-            input.addEventListener('keydown', handleOptionEnterKey);
-        });
+//         // Add event listener for the Enter key to the new question options
+//         newQuestion.querySelectorAll('.option-text').forEach(input => {
+//             input.addEventListener('keydown', handleOptionEnterKey);
+//         });
 
-        // Update option labels for the new question
-        updateOptionLabels(newQuestion);
-    };
+//         // Update option labels for the new question
+//         updateOptionLabels(newQuestion);
+//     };
 
 
-    const options = document.querySelectorAll('.question-option');
+//     const options = document.querySelectorAll('.question-option');
 
-    function updateOptionId(option){
-        if (option){
-            const optionId = option.querySelector('.option-alpha');
-            optionId.textContent = String.fromCharCode(optionId.charCodeAt(0) + 1) + ')';
+//     function updateOptionId(option){
+//         if (option){
+//             const optionId = option.querySelector('.option-alpha');
+//             optionId.textContent = String.fromCharCode(optionId.charCodeAt(0) + 1) + ')';
             
-            if (option.nextElementSibling){
-                updateOptionId(option.nextElementSibling)
-            }
-        }
-    }
+//             if (option.nextElementSibling){
+//                 updateOptionId(option.nextElementSibling)
+//             }
+//         }
+//     }
 
 
-    function addOptionEventListener(option){
-        if (option){
-            option.addEventListener('keypress', function(event) {
-                if (event.key === "Enter"){
-                    const newOption = option.cloneNode(true);
-                    updateOptionId(newOption);
+//     function addOptionEventListener(option){
+//         if (option){
+//             option.addEventListener('keypress', function(event) {
+//                 if (event.key === "Enter"){
+//                     const newOption = option.cloneNode(true);
+//                     updateOptionId(newOption);
 
-                    option.parentElement.insertBefore(newOption, option.nextSibling);
+//                     option.parentElement.insertBefore(newOption, option.nextSibling);
                     
-                    addOptionEventListener(newOption);
+//                     addOptionEventListener(newOption);
 
-                    newOption.querySelector('.option-text').focus();
-                }
-            })
-        }
-    }
+//                     newOption.querySelector('.option-text').focus();
+//                 }
+//             })
+//         }
+//     }
 
     
-    options.forEach(addOptionEventListener);
-});
+//     options.forEach(addOptionEventListener);
+// });
     
 
 
