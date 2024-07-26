@@ -6,7 +6,7 @@
     <meta name="author" content="FiMo_IT">
     <meta name="keywords" content="Quiz, Test, Exam, User">
     <meta name="description" content="Test your knowledge here by picking a quiz on this page. Users can also create their own quizzes.">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <title>Document</title>
 
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ URL::asset('/css/quiz_specification_panel.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/css/footer.css') }}">
 
+    
 </head>
 <body>
 
@@ -74,7 +75,13 @@
         <p>© 2024 fimoIT. All rights reserved.</p>
     </footer>
 
+<script>
+
+</script>
+
 <script src="{{ URL::asset("/js/main.js") }}"></script>
+<script src="{{ URL::asset("/js/quiz_editor.js") }}"></script>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 
     <!-- Including Popper scripts for dropdowns, popovers, tooltips, etc. -->

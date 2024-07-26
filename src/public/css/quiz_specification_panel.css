@@ -168,7 +168,7 @@
 
 
 /* -- */
-.general-info-section{
+#general-info-section{
     font-size: inherit;
     /* background-color: green; */
     height: fit-content;
@@ -187,12 +187,12 @@
     /* background-color: red; */
 }
 
-.general-info-section {
+#general-info-section {
     /* margin-top: -0.0001em; */
     padding-bottom: 30px;
 }
 
-.general-info-section p, .question-list-section p{
+#general-info-section p, #question-list-section p{
     font-size: 0.95em;
 }
 
@@ -242,47 +242,68 @@
     grid-area: a;                                 
 }
 
+/* General Rules */
+    .quiz-inputs-panel > * {
+        width: 100%;
+        /* background-color: red; */
+    }
 
-.quiz-inputs-panel select {
-    width: 100%;
-}
+
+    .quiz-inputs-panel select {
+        width: 100%;
+    }
 
 
-.quiz-inputs-panel > fieldset, .quiz-inputs-panel > .time-value-unit-wrapper > fieldset{
-    height: clamp(5px, 20vh, 40px);
-  
-}
+    .quiz-inputs-panel > fieldset, .quiz-inputs-panel > .time-value-unit-wrapper > fieldset{
+        height: clamp(5px, 20vh, 40px);  
+    }
 
-/* This style ensures all inputs or selects merge with their fieldset container */
-/* Also widgets needs to be indented from top because of legends */
-.quiz-inputs-panel fieldset > input, .quiz-inputs-panel fieldset > select,
-fieldset > textarea {
-    outline: 0;
-    border: 0 !important;
-    box-shadow: none !important;
-    font-size: 0.8em;
-    /* margin-top: 0.00000001em; */
-}
+    /* This style ensures all inputs or selects merge with their fieldset container */
+    /* Also widgets needs to be indented from top because of legends */
+    .quiz-inputs-panel fieldset > input, .quiz-inputs-panel fieldset > select,
+    fieldset > textarea {
+        outline: 0;
+        border: 0 !important;
+        box-shadow: none !important;
+        font-size: 0.8em;
+        /* margin-top: 0.00000001em; */
+    }
 
-.quiz-inputs-panel .time-value-unit-wrapper{
+    .quiz-inputs-panel .time-value-unit-wrapper {
+        display: flex;
+        flex-direction: row;
+
+    }
+    
+    .time-value-unit-wrapper > fieldset:first-child {
+        flex: 0.5;
+        box-sizing: border-box; /* Ensures padding and border are included in the width */
+    }
+    
+    .time-value-unit-wrapper > fieldset:first-child > input {
+        width: 100%; /* Take full width of fieldset */
+        box-sizing: border-box; /* Includes padding and border in the width */
+    }
+    
+    .time-value-unit-wrapper > fieldset:nth-child(2) {
+        flex: 0.5;
+        box-sizing: border-box;
+    }
+    
+    .time-value-unit-wrapper > fieldset:nth-child(2) > select {
+        width: 100%; /* Take full width of fieldset */
+        box-sizing: border-box;
+    }
+
+
+.type-difficulty-wrapper{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 5px;
 }
 
-.time-value-unit-wrapper > fieldset:first-child{
-    flex: 0.40;
+.type-difficulty-wrapper > * {
+    flex: 1;
 }
-
-.time-value-unit-wrapper > fieldset:first-child > input{
-    max-width: 2.8em;
-}
-
-.time-value-unit-wrapper > fieldset:nth-child(2){
-    flex: 0.60;
-}
-
 
 
 /* ############################ subject-tag-list ############################ */
@@ -343,26 +364,33 @@ fieldset > textarea {
 
 /* ############################ quiz-description-area ############################ */
 
-.quiz-description-area{
+.quiz-description-wrapper{
     /* height: 100%; */
     display: flex;
     grid-area: c;
+    height: 93.5%;
 }
 
-.quiz-description-area textarea{
-    resize: none;
-    overflow-y: scroll;
-    width: 100%;
-    min-height: 10em;
-    /* background-color: red; */
-    /* height: 500px; */
-}
+    .quiz-description-wrapper > fieldset{
+        width: 100%;
+        height: 99.35%;
+    }
+
+    .quiz-description-area{
+        /* background-color: #444444; */
+        resize: none;
+        overflow-y: auto;
+        width: 100%;
+        min-height: 10em;
+        height: 100%;
+
+    }
 
 
 /* ############################ question-list-section ############################ */
 
 
-.question-list-section{
+#question-list-section{
     flex: 1;
     font-size: inherit;
     /* background-color: red; */
@@ -373,7 +401,7 @@ fieldset > textarea {
 }
 
 
-.question-list-section .question-list-panel{
+#question-list-section .question-list-panel{
     width: 100%;
     padding: 1em;
     /* margin-top: 44px; */
@@ -523,11 +551,10 @@ fieldset > textarea {
 }
 
 
-
 .quiz-editor-nav-menu .submit-button{
     /* margin: 10px auto; */
     /* padding: 30px 100px; */
-    padding: 5px 50px;
+    padding: 0.3em 2.5em;
     border-radius: 10px;
     font-weight: bold;
     font-size: 1.0em;
@@ -539,15 +566,120 @@ fieldset > textarea {
     display: inline-block;
 }
 
-@media only screen and (max-width: 1200px){
-    .quiz-specification-panel .section-wrapper{
-        /* height: clamp(600px, 75vh, 1650px); */
-        flex-direction: column;
-        justify-content: flex-start;
-        /* gap: 0; */
-        /* background-color: red; */
+.submit-button-pulsing{
+    animation: pulse 2s infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 20px 20px rgba(46, 125, 50, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
     }
 }
+
+
+
+/* ############################ quiz-submission-panel ############################ */
+
+
+.quiz-content-wrapper{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0 15px;
+    align-items: start;
+    grid-template-areas: "a b c";
+}
+
+/* General Rules Section */
+            .quiz-content-wrapper legend{
+                font-size: 1em;
+                font-weight: bold;
+            }
+
+            .quiz-content-wrapper fieldset{
+                border-color: #444444;
+            }
+
+            .parameter-list > label, .quiz-description-text > p{
+                font-size: 0.8em;
+            }
+/*  ---  */
+    
+    .parameter-list-wrapper{
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 23px;
+        grid-area: a;
+    }
+
+        .parameter-list{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 5px 15px;
+            /* background-color: green; */
+            font-size: 1em;
+            /* margin-left: 15px; */
+            height: fit-content;
+            /* height: 100%; */
+        }
+
+         
+            
+            .parameter-list > label:nth-child(2n -1){
+                font-weight: bold;
+                
+            }
+    
+    .quiz-description-text{
+        height: 100%;
+        max-height: 100%;
+        /* max-height: 16.3em; */
+        overflow-y: scroll;
+        grid-area: b;
+        box-sizing: border-box;
+    }
+
+    .quiz-image{
+        display: block;
+        margin-top: 10px;
+        grid-area: c;
+        margin: auto;
+    }
+
+
+
+
+@media only screen and (max-width: 800px){
+    .quiz-content-wrapper{
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "a c"
+            "b b"
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .quiz-content-wrapper{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "a"
+            "b"
+            "c";
+    }
+}  
+    
+/* ############################ */
+
+
+
+
+
 
 @media only screen and (max-width: 420px){
 
@@ -583,7 +715,7 @@ fieldset > textarea {
     }
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 760px){
     .quiz-specification-panel .header-submit-button-wrapper{
         flex-direction: column;
         align-items: flex-start;

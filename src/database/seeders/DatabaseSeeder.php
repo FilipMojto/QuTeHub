@@ -30,5 +30,9 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             // Add other seeders here
         ]);
+
+        $this->call([
+            QuizTypeSeeder::class,  
+        ]);
     }
 }

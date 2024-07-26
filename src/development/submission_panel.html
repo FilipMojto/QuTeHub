@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet"  href="../public/css/main.css">
+
+    <style>
+
+        .submission-section-content-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .quiz-name-title{
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .quiz-attributes{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            width: fit-content;
+            padding: 100px;
+            box-sizing: border-box;
+        }
+
+        .quiz-attributes > label:nth-child(2n - 1){
+            font-weight: bold;
+            box-sizing: border-box;
+            padding: 10px;
+            border-right: 11px solid rgb(255, 255, 255);
+        }
+
+        .quiz-attributes > label:nth-child(2n){
+            justify-self: center;
+
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .quiz-attributes > label:nth-child(4n - 3),
+        .quiz-attributes > label:nth-child(4n - 2) {
+            background-color: rgb(137, 137, 137);
+        }
+
+        .quiz-attributes > label:nth-child(4n - 1),
+        .quiz-attributes > label:nth-child(4n) {
+            /* font-weight: bold; */
+            background-color: rgb(182, 182, 182);
+        }
+
+
+        .quiz-description{
+            background-color: rgb(182, 182, 182);;
+        }
+
+
+        
+        
+
+    </style>
+</head>
+<body>
+    <section id="submission-section" class="quiz-editor-panel">
+        <h3>Submission</h3>
+        <hr>
+        <h4 class="quiz-name-title" for="">Basic Math Quiz</h4>
+
+        <div class="submission-section-content-wrapper">
+            <div class="quiz-attributes">
+                <label for="">Type</label><label for="">Quiz</label>
+                <label for="">Time</label><label for="">20min</label>
+                <label for="">Questions</label><label for="">30</label>
+                <label for="">Difficulty</label><label for="">Easy</label>
+                <label for="">Creator</label><label for="">Joseph Kirk</label>
+            </div>
+
+            <img src="../public/img/math_theme.png" width="300px">
+
+            <section class="quiz-description">
+                <h4>Description</h4>
+                <article>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</article>
+            </section>
+
+
+            <button>submit</button>
+
+        </div>
+
+        
+
+    </section>
+</body>
+</html>

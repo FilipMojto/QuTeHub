@@ -25,7 +25,7 @@ body{
     padding-left: 1em;
     padding-right: 1em;
     /* padding-bottom: 20em; */
-    background: white;
+    background: rgb(69, 69, 69);
     display: flex;
     flex-direction: row;
     justify-content: center;

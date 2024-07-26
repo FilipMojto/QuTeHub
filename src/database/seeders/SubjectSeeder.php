@@ -35,5 +35,8 @@ class SubjectSeeder extends Seeder
                 ['created_at' => $now, 'updated_at' => $now] // Values to update or insert
             );
         }
+
+
+        
     }
 }

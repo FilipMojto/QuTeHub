@@ -13,6 +13,8 @@ class Quiz extends Model
         'name',
         'time',
         'user_id',
+        'description',
+        'quiz_type_id',
         'difficulty_id'
     ];
 
@@ -30,5 +32,9 @@ class Quiz extends Model
     public function difficulty()
     {
         return $this->belongsTo(Difficulty::class, 'difficulties');
+    }
+
+    public function type(){
+        return $this->belongsTo(QuizType::class, 'quiz_types');
     }
 }

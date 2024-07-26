@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->integer('time')->unsigned();
+            $table->text('description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('quiz_type_id')->constrained()->onDelete('cascade');
             $table->foreignId('difficulty_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
