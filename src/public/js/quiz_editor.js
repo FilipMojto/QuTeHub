@@ -72,6 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             showPanel(currentPanelIndex);
             changeSelectedOption(currentPanelIndex);
             nextArrow.classList.add('arrow-right-enabled');
+            document.querySelector('.quiz-specification-panel input[type="submit"]').classList.remove('submit-button-pulsing');
+
         }
         
     }
