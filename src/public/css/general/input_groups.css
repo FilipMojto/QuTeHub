@@ -1,0 +1,27 @@
+
+.qutehub-input-with-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    color: black;
+    gap: 5px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.qutehub-merge-element{
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    background-color: inherit;
+    color: inherit;
+    font-size: 0.9em;
+    flex-grow: 1;
+    min-width: 0;
+    /* max-width: 80%; */
+}
+
+.qutehub-img{
+    width: 1em;
+}

@@ -177,19 +177,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                document.getElementById('selected-subjects').value = JSON.stringify(selectedSubjectIndices);
+                const container = document.getElementById('subjects-container');
+                selectedSubjectIndices.forEach(subject => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden'; // Use hidden inputs to avoid showing them on the page
+                    input.name = 'subjects[]'; // Use array notation
+                    input.value = subject;
+                    container.appendChild(input);
+                });
+
+                // document.getElementById('selected-subjects').value = JSON.stringify(selectedSubjectIndices);
 
                 // ------------------- //
                 
                 // filling request data with quiz params for validation
 
 
-                quizAttributes['name'] = document.querySelector('[name="name"]').value,
-                quizAttributes['type'] = document.querySelector('[name="type"]').value,
-                quizAttributes['difficulty'] = document.querySelector('[name="difficulty"]').value,
-                quizAttributes['time'] = document.querySelector('[name="time"]').value,
-                quizAttributes['time-unit'] = document.querySelector('[name="time-unit"]').value,
-                quizAttributes['subjects'] = document.querySelector('[name="subjects"]').value
+                quizAttributes['name'] = document.querySelector('[name="name"]').value;
+                quizAttributes['type'] = document.querySelector('[name="type"]').value;
+                quizAttributes['difficulty'] = document.querySelector('[name="difficulty"]').value;
+                quizAttributes['time'] = document.querySelector('[name="time"]').value;
+                quizAttributes['time-unit'] = document.querySelector('[name="time-unit"]').value;
+                console.log(selectedSubjectIndices);
+                quizAttributes['subjects'] = selectedSubjectIndices;
                 
         
                 const response = await fetch('/validate-quiz-params', {
@@ -300,6 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
             document.getElementById('questionsData').value = JSON.stringify(questions);
+
+
+            
+
 
             event.target.submit(); // Submit the form
         }

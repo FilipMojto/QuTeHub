@@ -15,7 +15,7 @@ class Subject extends Model
 
     public function quizzes()
     {
-        return $this->belongsToMany(Quiz::class, 'quiz_subjects');
+        return $this->belongsToMany(Quiz::class, 'quiz_subjects', 'subject_id', 'quiz_id');
     }
 
 }

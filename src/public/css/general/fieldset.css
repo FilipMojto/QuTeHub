@@ -1,0 +1,21 @@
+
+
+.qutehub-fieldset-style-one{
+    border-color: #444444;
+    border-style: inset;
+    /* border: 1px solid #444444; */
+}
+
+.qutehub-fieldset-style-one > legend{
+    color: white;
+    font-size: 0.85em;   
+}
+
+.qutehub-fieldset-input{
+    background-color: inherit;
+    color: inherit;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    width: 100%;
+}

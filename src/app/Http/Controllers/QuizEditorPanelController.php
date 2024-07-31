@@ -49,7 +49,7 @@ class QuizEditorPanelController extends Controller
             'difficulty' => 'integer',
             'time' => 'required|integer|max:99999',
             'time-unit' => 'required|integer',
-            'subjects' => 'required|string',
+            'subjects' => 'required|array',
             'description' => 'nullable|string|max:65535',
             // 'questions' => 'required|string'
         ], $messages);
@@ -63,6 +63,7 @@ class QuizEditorPanelController extends Controller
 
     public function store(Request $request)
     {
+        
         $messages = [
             'name.required' => 'Name is required.',
             'name.unique' => 'Name is already taken.',
@@ -82,7 +83,7 @@ class QuizEditorPanelController extends Controller
             'difficulty' => 'integer',
             'time' => 'required|integer|max:99999',
             'time-unit' => 'required|integer',
-            'subjects' => 'required|string',
+            'subjects' => 'required|array',
             'description' => 'nullable|string|max:65535',
             'questions' => 'required|string'
         ], $messages);
@@ -105,17 +106,20 @@ class QuizEditorPanelController extends Controller
                 'description' => $validatedData['description'],
                 'user_id' => auth()->id(),
                 'quiz_type_id' => $validatedData['type'] + 1,
-                'difficulty_id' => $validatedData['difficulty'],
+                'difficulty_id' => $validatedData['difficulty'] + 1,
             ]);
 
             // Handle subjects
-            $subjects = json_decode($validatedData['subjects'], true);
-            foreach ($subjects as $subject) {
-                QuizSubject::create([
-                    'quiz_id' => $new_quiz->id,
-                    'subject_id' => $subject,
-                ]);
-            }
+            // $subjects = json_decode($validatedData['subjects'], true);
+            // foreach ($subjects as $subject) {
+            //     QuizSubject::create([
+            //         'quiz_id' => $new_quiz->id,
+            //         'subject_id' => $subject,
+            //     ]);
+            // }
+
+            $new_quiz->subjects()->attach($validatedData['subjects']);
+
 
             // Handle questions
             $questions = json_decode($validatedData['questions'], true);

@@ -45,18 +45,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function difficulties()
+    public function quizzes()
     {
-        return $this->belongsToMany(Difficulty::class, 'quiz_difficulties');
+        return $this->hasMany(Quiz::class); 
     }
 
-    public function subjects()
-    {
-        return $this->belongsToMany(Subject::class, 'quiz_subjects');
-    }
+    // public function difficulties()
+    // {
+    //     return $this->belongsToMany(Difficulty::class, 'quiz_difficulties');
+    // }
 
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
-    }
+    // public function subjects()
+    // {
+    //     return $this->belongsToMany(Subject::class, 'quiz_subjects');
+    // }
+
+    // public function questions()
+    // {
+    //     return $this->hasMany(Question::class);
+    // }
 }

@@ -22,7 +22,12 @@
     <link rel="stylesheet" href="{{ URL::asset('/css/inputs.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/css/quiz_specification_panel.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/css/footer.css') }}">
-
+    <link rel="stylesheet" href="{{ URL::asset('/css/general/panel_header.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/css/general/fieldset.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/css/personal_quiz_list.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/css/general/input_groups.css') }}">
+    
+    
     
 </head>
 <body>
@@ -42,9 +47,9 @@
                     <label class="username"><b>{{ $user->name }}</b></label>
                     <hr>
             
-                    <button class="submit-button"  onclick="location.assign('/quiz-specification')">New Quiz</button>
+                    <button class="submit-button" onclick="location.assign('/quiz-specification')">New Quiz</button>
                     
-                    <button class="submit-button">My Quizzes</button>
+                    <button class="submit-button" onclick="location.assign('/personal-quiz-list')">My Quizzes</button>
 
                     <button class="submit-button" onclick="location.assign('/logout')">Log Out</button>
 
@@ -81,6 +86,7 @@
 
 <script src="{{ URL::asset("/js/main.js") }}"></script>
 <script src="{{ URL::asset("/js/quiz_editor.js") }}"></script>
+<script src="{{ URL::asset("/js/personal_quiz_list.js") }}"></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 

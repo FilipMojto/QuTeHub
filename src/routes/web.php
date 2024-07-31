@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginPanelController;
 use App\Http\Controllers\RegisterPanelController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\QuizEditorPanelController;
+use App\Http\Controllers\PersonalQuizListController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,3 +30,7 @@ Route::post('/register', [RegisterPanelController::class, 'register'])->name('re
 Route::get('/quiz-specification', [QuizEditorPanelController::class, 'view_specification_panel'])->name('quiz.view');
 Route::post('/quiz', [QuizEditorPanelController::class, 'store'])->name('quiz.store');
 Route::post('/validate-quiz-params', [QuizEditorPanelController::class, 'validate_quiz_params']);
+
+
+Route::get('/personal-quiz-list', [PersonalQuizListController::class, 'view_PQL'])->name('PQL.view');
+Route::delete('/quizzes/{id}', [PersonalQuizListController::class, 'delete_quiz'])->name('quizzes.destroy');

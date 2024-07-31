@@ -4,11 +4,13 @@
 <form class="quiz-specification-panel" id="editor-panel-form" method="POST" action="{{ route('quiz.store') }}">
     @csrf
 
-    <input type="hidden" name="subjects" id="selected-subjects">
+    <!-- <input type="hidden" name="subjects" id="selected-subjects"> -->
     <input type="hidden" name="difficulty" id="selected-difficulty">
     <input type="hidden" name="type" id="selected-type">
     <input type="hidden" id="questionsData" name="questions">
     <input type="hidden" id="question-time-unit" name="time-unit"> 
+
+    <div id="subjects-container"></div>
 
     <div>
         <div class="quiz-editor-nav-menu">
@@ -38,6 +40,13 @@
         </div>
     </div>
 
+    @if ($errors->has('subjects'))
+                            <div class="alert-text-image-wrapper">
+                                <img src="{{ URL::asset('icons/warning.png') }}" width="20px">
+                                <label class="alert-text">{{ $errors->first('subjects') }}</label>
+                            </div>
+                        @endif
+
     <div id="section-wrapper">
         <section id="general-info-section" class="quiz-editor-panel" style="display: block;">
             <h3>Parameters</h3>
@@ -65,7 +74,7 @@
                             <fieldset class="input-design-one">
                                 <legend>Type</legend>
 
-                                <select name="" id="quiz-type-list" class="input-design-one">
+                                <select id="quiz-type-list" class="input-design-one">
                                     <option value="">Quiz</option>
                                     <option value="">Test</option>
                                     <option value="">Questionnaire</option>
