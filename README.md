@@ -12,7 +12,49 @@ This repository contains most of Author's local repository's development content
 
 ## Purpose
 
-The purpose of this repository is to showcase various aspects which appeared during development, thus offer the reader an insight into a web development process. Yet another reason is to capture and document page's versioning.
+The purpose of this repository is to showcase various aspects which appeared during development, thus offers the reader an insight into a web development process. Yet another reason is to capture and document page's versioning.
+
+Following abbreviations are commonly used across this document:
+
+1. _LP_     -> Login Panel
+2. _PQL_    -> Personal Quiz List
+3. _QE_     -> Quiz Editor
+4. _QEP_    -> Quiz Editor Panel
+5. _QTQ_    -> Quiz/Test/Questionnaire
+6. _RP_     -> Register Panel
+
+
+## Releases
+
+See the latest news in the form of releases and watch for the changes made. 
+
+### 0.0.1
+
+This is a first development release of a QuTeHub Website. In the release following features are now included:
+
+1. **Login&Register Panels (LP&RP)**
+2. **Quiz Editor Panel (QEP)**
+3. **Personal Quiz List (PQL)**
+
+User can navigate between panels using _Header Panel_. User can create an __Account__ and log in using the following personal information:
+
+1. _Username_
+2. _Password_
+3. _Email_
+
+When logged in, user can:
+
+1. Create a new QTQ instance using _QEP_
+2. View their QTQ instances using _PQL_
+
+Creating a new QTQ instances currently involves following phases:
+
+1. Specification of Quiz Parameters
+2. Setting up questions and their options using QE
+3. Review and submission of quiz
+
+
+
 
 
 ## Structure
